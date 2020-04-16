@@ -1,0 +1,24 @@
+<div class="container col-md-6">
+  <div class="card">
+    <div class="card-header">
+      <h3>Modificar {{info.dato}}</h3>
+    </div>
+    <div class="card-body">
+      <form action="">
+        <div class="form-group">
+          <label for="">Id:</label>
+          <input [(ngModel)]="info.id" name="id" type="text" class="form-control" readonly>
+        </div>
+        <div class="form-group">
+          <label for="">Dato:</label>
+          <input [(ngModel)]="info.dato" name="dato" type="text" class="form-control" readonly>
+        </div>
+        <div class="form-group">
+          <label for="">Valor:</label>
+          <input [(ngModel)]="info.valor" name="valor" type="text" class="form-control">
+        </div>
+        <button (click)="Actualizar(info)" class="btn btn-danger">Actualizar</button>
+      </form>
+    </div>
+  </div>
+</div>

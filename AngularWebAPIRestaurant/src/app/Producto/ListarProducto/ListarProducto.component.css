@@ -1,0 +1,10 @@
+tr td img{
+    width: 130px; border-radius: 15%;margin: 5px;
+}
+td{
+    vertical-align: middle;
+}
+button{
+    margin: 5px auto;
+    display: block;
+}

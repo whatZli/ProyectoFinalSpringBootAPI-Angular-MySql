@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div  style="text-align:center">
+  <h1>
+    Gestión {{ title }}
+  </h1>
+  
+</div>
+<br>
+<div class="container text-center">
+  <button (click)="GestionarTrabajadores()" class="btn btn-info" style="margin-left: 10px;">Gestionar Trabajadores</button>
+  <button (click)="GestionarProducto()" class="btn btn-info" style="margin-left: 10px;">Gestionar Productos</button>
+  <button (click)="GestionarInfo()" class="btn btn-info" style="margin-left: 10px;">Información Empresa</button>
+  <button (click)="Inicio()" class="btn btn-info" style="float:right;">Inicio</button>
+</div>
+<hr>
+<router-outlet></router-outlet>

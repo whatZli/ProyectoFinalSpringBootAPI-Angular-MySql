@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3 style="display: inline-block;">Gestionar Información</h3>
+      <button (click)="Nuevo()" class="btn btn-info" disabled style="float: right;">Nuevo dato</button> 
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr class="text-center">
+            <th>DATO</th>
+            <th>VALOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let info of infos" class="text-center">
+            <td>{{info.dato}}</td>
+            <td>{{info.valor}}</td>
+            <td>
+              <button (click)="Editar(info)" class="btn btn-warning">Editar</button>
+              <button (click)="Delete(info)" class="btn btn-danger" style="margin-left: 10px;" disabled>Borrar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

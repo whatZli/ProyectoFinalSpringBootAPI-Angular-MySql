@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3 style="display: inline-block;">Gestionar Productos</h3>
+      <button (click)="NuevoProducto()" class="btn btn-info" style="float: right;">Nuevo Producto</button>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr class="text-center">
+            <th></th>
+            <th>NOMBRE</th>
+            <th>CATEGORIA</th>
+            <th>STOCK</th>
+            <th>PRECIO</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos" class="text-center">
+            <td><img src="{{producto.imagen}}" alt=""></td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.categoria}}</td>
+            <td>{{producto.stock}} unidades</td>
+            <td>{{producto.precio}} €</td>
+            <td id="acciones">
+              <button (click)="VerProducto(producto)" class="btn btn-info">Ver producto</button>
+              <button (click)="EditarProducto(producto)" class="btn btn-warning">Editar producto</button>
+              <button (click)="DeleteProducto(producto)" class="btn btn-danger">Borrar producto</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

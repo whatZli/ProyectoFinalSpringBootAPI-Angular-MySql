@@ -1,0 +1,13 @@
+#imagen-perfil{
+    text-align: center; 
+    margin: auto; 
+    display: block;
+    border-radius: 20%;
+}
+button{
+    margin: 5px 10px;
+}
+.buttons{
+    width: 100%;
+    text-align: center;
+}
