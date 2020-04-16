@@ -1,14 +1,8 @@
 
 package com.app.restaurant.controller;
 
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.ParseException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,11 +51,25 @@ public class ControladorReserva {
     
     /*---------------------------------------------------------*/
     
-	@GetMapping(path = {"/fecha/{fecha}"})
+	@GetMapping(path = {"/consulta_fecha/{fecha}"})
     public List<Reserva> reservasEnUnaFecha(@PathVariable("fecha")String fecha){
 		try
 	       {
 	    	return ReservaService.listarPorFecha(fecha);
+	       }
+	       catch(ArrayIndexOutOfBoundsException e)
+	       {
+	    	   return null;
+	       }
+    }
+	
+	@GetMapping(path = {"/consulta_entre_fechas/{fechas}"})
+    public List<Reserva> reservasEntreFechas(@PathVariable("fechas")String fechas){
+		String fecha1="2020-03-16";
+		String fecha2="2020-05-16";
+		try
+	       {
+	    	return ReservaService.listarEntreFechas(fecha1,fecha2);
 	       }
 	       catch(ArrayIndexOutOfBoundsException e)
 	       {

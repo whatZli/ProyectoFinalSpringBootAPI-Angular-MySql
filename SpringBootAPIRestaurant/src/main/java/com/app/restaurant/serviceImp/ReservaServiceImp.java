@@ -1,7 +1,6 @@
 
 package com.app.restaurant.serviceImp;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +47,9 @@ public class ReservaServiceImp implements ReservaService{
 	@Override
 	public List<Reserva> listarPorFecha(String date) {
 		return repositorio.findByFecha(date);
+	}
+	
+	public List<Reserva> listarEntreFechas(String fecha1, String fecha2) {
+		return repositorio.findByDateBetween(fecha1, fecha2);
 	}
 }
