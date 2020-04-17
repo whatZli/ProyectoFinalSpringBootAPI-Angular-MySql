@@ -44,6 +44,11 @@ public class ReservaServiceImp implements ReservaService{
        return reserva;
     }
 
+    @Override
+	public List<Reserva> listarHoy() {
+		return repositorio.findByToday();
+	}
+    
 	@Override
 	public List<Reserva> listarPorFecha(String date) {
 		return repositorio.findByFecha(date);
@@ -52,4 +57,6 @@ public class ReservaServiceImp implements ReservaService{
 	public List<Reserva> listarEntreFechas(String fecha1, String fecha2) {
 		return repositorio.findByDateBetween(fecha1, fecha2);
 	}
+
+	
 }

@@ -16,8 +16,10 @@ public interface ReservaRepositorio extends Repository<Reserva, Integer>{
     void delete(Reserva reserva);
     
     
+    @Query( "select o from Reserva o where fecha=CURRENT_DATE" )
+    List<Reserva> findByToday();
+    
     List<Reserva>findByFecha(String date);
-
 
     @Query( "select o from Reserva o where fecha between :fecha1 and :fecha2" )
     List<Reserva> findByDateBetween(@Param("fecha1") String fecha1,@Param("fecha2") String fecha2);

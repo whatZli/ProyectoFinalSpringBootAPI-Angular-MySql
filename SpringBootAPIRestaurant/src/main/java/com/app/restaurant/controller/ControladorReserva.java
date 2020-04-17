@@ -51,6 +51,18 @@ public class ControladorReserva {
     
     /*---------------------------------------------------------*/
     
+    @GetMapping(path = {"/consulta_hoy"})
+    public List<Reserva> reservasHoy(){
+		try
+	       {
+	    	return ReservaService.listarHoy();
+	       }
+	       catch(ArrayIndexOutOfBoundsException e)
+	       {
+	    	   return null;
+	       }
+    }
+    
 	@GetMapping(path = {"/consulta_fecha/{fecha}"})
     public List<Reserva> reservasEnUnaFecha(@PathVariable("fecha")String fecha){
 		try
@@ -65,8 +77,10 @@ public class ControladorReserva {
 	
 	@GetMapping(path = {"/consulta_entre_fechas/{fechas}"})
     public List<Reserva> reservasEntreFechas(@PathVariable("fechas")String fechas){
-		String fecha1="2020-03-16";
-		String fecha2="2020-05-16";
+		String fechaSplit[]=fechas.split("&");
+		
+		String fecha1=fechaSplit[0];
+		String fecha2=fechaSplit[1];
 		try
 	       {
 	    	return ReservaService.listarEntreFechas(fecha1,fecha2);
