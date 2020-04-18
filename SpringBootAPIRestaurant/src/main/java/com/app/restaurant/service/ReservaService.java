@@ -13,7 +13,7 @@ public interface ReservaService {
     Reserva delete(int id);
     
     /*-------------*/
-    
+    List<Reserva>listarReservasCliente(int id);
     List<Reserva>listarHoy();
     List<Reserva>listarPorFecha(String date);
     List<Reserva>listarEntreFechas(String fecha1,String fecha2);

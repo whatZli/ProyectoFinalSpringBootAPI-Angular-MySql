@@ -51,6 +51,11 @@ public class ControladorReserva {
     
     /*---------------------------------------------------------*/
     
+    @GetMapping(path = {"/cliente/{id}"})
+    public List<Reserva> reservasDeCliente(@PathVariable("id")int id){
+	    	return ReservaService.listarReservasCliente(id);
+    }
+    
     @GetMapping(path = {"/consulta_hoy"})
     public List<Reserva> reservasHoy(){
 		try

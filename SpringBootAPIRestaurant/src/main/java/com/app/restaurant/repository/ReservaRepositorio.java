@@ -15,6 +15,8 @@ public interface ReservaRepositorio extends Repository<Reserva, Integer>{
     Reserva save(Reserva reserva);
     void delete(Reserva reserva);
     
+    @Query( "select o from Reserva o where id_cliente=:id" )
+    List<Reserva> findByClientId(@Param("id") int id);
     
     @Query( "select o from Reserva o where fecha=CURRENT_DATE" )
     List<Reserva> findByToday();

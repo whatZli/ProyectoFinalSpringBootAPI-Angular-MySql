@@ -44,6 +44,13 @@ public class ReservaServiceImp implements ReservaService{
        return reserva;
     }
 
+    
+    @Override
+	public List<Reserva> listarReservasCliente(int id) {
+    	return repositorio.findByClientId(id);
+	}
+    
+    
     @Override
 	public List<Reserva> listarHoy() {
 		return repositorio.findByToday();
@@ -57,6 +64,8 @@ public class ReservaServiceImp implements ReservaService{
 	public List<Reserva> listarEntreFechas(String fecha1, String fecha2) {
 		return repositorio.findByDateBetween(fecha1, fecha2);
 	}
+
+	
 
 	
 }
