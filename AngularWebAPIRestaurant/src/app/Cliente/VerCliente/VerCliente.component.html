@@ -8,28 +8,37 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="">Nombre:</label>
-            <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control">
+            <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control" readonly>
           </div>
           <div class="form-group">
             <label for="">Apellidos:</label>
-            <input [(ngModel)]="cliente.apellidos" name="apellidos" type="text" class="form-control">
+            <input [(ngModel)]="cliente.apellidos" name="apellidos" type="text" class="form-control" readonly>
           </div>
           <div class="form-group">
             <label for="">Telefono:</label>
-            <input [(ngModel)]="cliente.telefono" name="telefono" type="text" class="form-control">
+            <input [(ngModel)]="cliente.telefono" name="telefono" type="text" class="form-control" readonly>
           </div>
         </div>
         <div class="col-sm">
           <h5>Listado de reservas de este cliente</h5>
-          <table>
-            <tr>
-              <td>Fecha</td>
-              <td>Hora</td>
-              <td>Personas</td>
-            </tr>
-            <tr >
+          <table class="table table-hover">
+            <thead>
+              <tr class="text-center">
+                <td>ID Reserva</td>
+                <td>Fecha</td>
+                <td>Hora</td>
+                <td>Personas</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let reserva of reservas" class="text-center">
+                <td>{{reserva.id}}</td>
+                <td>{{reserva.fecha}}</td>
+                <td>{{reserva.hora}}</td>
+                <td>{{reserva.personas}}</td>
+              </tr>
+            </tbody>
 
-            </tr>
           </table>
         </div>
       </div>

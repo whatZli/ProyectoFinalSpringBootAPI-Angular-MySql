@@ -4,6 +4,7 @@ import { Trabajador } from '../Modelo/Trabajador';
 import { Producto } from '../Modelo/Producto';
 import { Info } from '../Modelo/Info';
 import { Cliente } from '../Modelo/Cliente';
+import { Reserva } from '../Modelo/Reserva';
 
 @Injectable()
 export class ServiceService {
@@ -79,5 +80,10 @@ export class ServiceService {
   }
   deleteCliente(cliente:Cliente){
     return this.http.delete<Cliente>(this.Url+"/cliente"+"/"+cliente.id);
+  }
+
+
+  getReservasCliente(id:number){
+    return this.http.get<Reserva[]>(this.Url+"/reserva/cliente/"+id);
   }
 }
