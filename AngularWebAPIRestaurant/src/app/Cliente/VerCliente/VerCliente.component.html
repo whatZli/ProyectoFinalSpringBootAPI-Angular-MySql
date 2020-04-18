@@ -1,0 +1,41 @@
+<div class="container col-md-6">
+  <div class="card">
+    <div class="card-header">
+      <h3>Ver cliente: {{cliente.nombre}}</h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-group">
+            <label for="">Nombre:</label>
+            <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Apellidos:</label>
+            <input [(ngModel)]="cliente.apellidos" name="apellidos" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Telefono:</label>
+            <input [(ngModel)]="cliente.telefono" name="telefono" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="col-sm">
+          <h5>Listado de reservas de este cliente</h5>
+          <table>
+            <tr>
+              <td>Fecha</td>
+              <td>Hora</td>
+              <td>Personas</td>
+            </tr>
+            <tr >
+
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="buttons">
+        <button (click)="VolverAGestion()" class="btn btn-info">Volver atrás</button>
+      </div>
+    </div>
+  </div>
+</div>

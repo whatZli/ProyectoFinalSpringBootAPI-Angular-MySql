@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3 style="display: inline-block;">Gestionar clientes</h3>
+      <button (click)="Nuevo()" class="btn btn-info" style="float: right;">Nuevo cliente</button> 
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr class="text-center">
+            <th>NOMBRE</th>
+            <th>APELLIDOS</th>
+            <th>TELEFONO</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes" class="text-center">
+            <td>{{cliente.nombre}}</td>
+            <td>{{cliente.apellidos}}</td>
+            <td>{{cliente.telefono}}</td>
+            <td>
+              <button (click)="Ver(cliente)" class="btn btn-info">Ver cliente</button>
+              <button (click)="Editar(cliente)" class="btn btn-warning">Editar cliente</button>
+              <button (click)="Delete(cliente)" class="btn btn-danger" >Borrar cliente</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

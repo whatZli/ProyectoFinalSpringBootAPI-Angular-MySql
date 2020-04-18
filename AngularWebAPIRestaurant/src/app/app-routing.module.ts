@@ -15,6 +15,13 @@ import { ListarInfoComponent } from './Info/Listar/ListarInfo.component';
 import { AddInfoComponent } from './Info/AddInfo/AddInfo.component';
 import { EditInfoComponent } from './Info/EditInfo/EditInfo.component';
 
+//Cliente modules
+
+import { ListarClienteComponent } from './Cliente/ListarCliente/ListarCliente.component';
+import { AddClienteComponent } from './Cliente/AddCliente/AddCliente.component';
+import { EditClienteComponent } from './Cliente/EditCliente/EditCliente.component';
+import { VerClienteComponent } from './Cliente/VerCliente/VerCliente.component';
+
 const routes: Routes = [
   {path:'gestionarTrabajadores',component:ListarTrabajadorComponent},
   {path:'addTrabajador',component:AddTrabajadorComponent},
@@ -29,6 +36,11 @@ const routes: Routes = [
   {path:'gestionarInfo',component:ListarInfoComponent},
   {path:'addInfo',component:AddInfoComponent},
   {path:'editInfo',component:EditInfoComponent},
+
+  {path:'gestionarClientes',component:ListarClienteComponent},
+  {path:'addCliente',component:AddClienteComponent},
+  {path:'editCliente',component:EditClienteComponent},
+  {path:'verCliente',component:VerClienteComponent},
 ];
 
 @NgModule({

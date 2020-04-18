@@ -18,6 +18,13 @@ import { ListarInfoComponent } from './Info/Listar/ListarInfo.component';
 import { AddInfoComponent } from './Info/AddInfo/AddInfo.component';
 import { EditInfoComponent } from './Info/EditInfo/EditInfo.component';
 
+//Cliente modules
+
+import { ListarClienteComponent } from './Cliente/ListarCliente/ListarCliente.component';
+import { AddClienteComponent } from './Cliente/AddCliente/AddCliente.component';
+import { EditClienteComponent } from './Cliente/EditCliente/EditCliente.component';
+import { VerClienteComponent } from './Cliente/VerCliente/VerCliente.component';
+
 import{FormsModule}from '@angular/forms';
 import{ServiceService}from '../app/Service/service.service';
 import{HttpClientModule}from '@angular/common/http';
@@ -40,6 +47,11 @@ import{HttpClientModule}from '@angular/common/http';
     ListarInfoComponent,
     AddInfoComponent,
     EditInfoComponent,
+
+    ListarClienteComponent,
+    AddClienteComponent,
+    EditClienteComponent,
+    VerClienteComponent,
   ],
   imports: [
     BrowserModule,

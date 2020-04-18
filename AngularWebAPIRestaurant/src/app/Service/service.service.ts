@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Trabajador } from '../Modelo/Trabajador';
 import { Producto } from '../Modelo/Producto';
 import { Info } from '../Modelo/Info';
+import { Cliente } from '../Modelo/Cliente';
 
 @Injectable()
 export class ServiceService {
@@ -61,5 +62,22 @@ export class ServiceService {
   }
   deleteInfo(info:Info){
     return this.http.delete<Info>(this.Url+"/info"+"/"+info.id);
+  }
+
+
+  getClientes(){
+    return this.http.get<Cliente[]>(this.Url+"/cliente");
+  }
+  createCliente(cliente:Cliente){
+    return this.http.post<Cliente>(this.Url+"/cliente",cliente);
+  }
+  getClienteId(id:number){
+    return this.http.get<Cliente>(this.Url+"/cliente"+"/"+id);
+  }
+  updateCliente(cliente:Cliente){
+    return this.http.put<Cliente>(this.Url+"/cliente"+"/"+cliente.id,cliente);
+  }
+  deleteCliente(cliente:Cliente){
+    return this.http.delete<Cliente>(this.Url+"/cliente"+"/"+cliente.id);
   }
 }

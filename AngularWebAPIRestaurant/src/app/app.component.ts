@@ -22,6 +22,7 @@ export class AppComponent {
   GestionarTrabajadores(){
     this.router.navigate(["gestionarTrabajadores"]);
   }
+  
   NuevoTrabajador(){
     this.router.navigate(["addTrabajador"]);
   }
@@ -38,5 +39,9 @@ export class AppComponent {
   }
   NuevaInfo(){
     this.router.navigate(["addInfo"]);
+  }
+
+  GestionarClientes(){
+    this.router.navigate(["gestionarClientes"]);
   }
 }
