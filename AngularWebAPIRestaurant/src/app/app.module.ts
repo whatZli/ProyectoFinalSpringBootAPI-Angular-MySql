@@ -25,6 +25,13 @@ import { AddClienteComponent } from './Cliente/AddCliente/AddCliente.component';
 import { EditClienteComponent } from './Cliente/EditCliente/EditCliente.component';
 import { VerClienteComponent } from './Cliente/VerCliente/VerCliente.component';
 
+//Reserva modules
+
+import { ListarReservaComponent } from './Reserva/ListarReserva/ListarReserva.component';
+import { AddReservaComponent } from './Reserva/AddReserva/AddReserva.component';
+import { EditReservaComponent } from './Reserva/EditReserva/EditReserva.component';
+import { VerReservaComponent } from './Reserva/VerReserva/VerReserva.component';
+
 import{FormsModule}from '@angular/forms';
 import{ServiceService}from '../app/Service/service.service';
 import{HttpClientModule}from '@angular/common/http';
@@ -52,6 +59,11 @@ import{HttpClientModule}from '@angular/common/http';
     AddClienteComponent,
     EditClienteComponent,
     VerClienteComponent,
+
+    ListarReservaComponent,
+    AddReservaComponent,
+    EditReservaComponent,
+    VerReservaComponent,
   ],
   imports: [
     BrowserModule,

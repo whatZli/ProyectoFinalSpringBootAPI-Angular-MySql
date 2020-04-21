@@ -81,9 +81,27 @@ export class ServiceService {
   deleteCliente(cliente:Cliente){
     return this.http.delete<Cliente>(this.Url+"/cliente"+"/"+cliente.id);
   }
-
-
   getReservasCliente(id:number){
     return this.http.get<Reserva[]>(this.Url+"/reserva/cliente/"+id);
+  }
+
+  
+  getReservas(){
+    return this.http.get<Reserva[]>(this.Url+"/reserva");
+  }
+  getReservasHoy(){
+    return this.http.get<Reserva[]>(this.Url+"/reserva/consulta_hoy");
+  }
+  createReserva(reserva:Reserva){
+    return this.http.post<Reserva>(this.Url+"/reserva",reserva);
+  }
+  getReservaId(id:number){
+    return this.http.get<Reserva>(this.Url+"/reserva"+"/"+id);
+  }
+  updateReserva(reserva:Reserva){
+    return this.http.put<Reserva>(this.Url+"/reserva"+"/"+reserva.id,reserva);
+  }
+  deleteReserva(reserva:Reserva){
+    return this.http.delete<Reserva>(this.Url+"/reserva"+"/"+reserva.id);
   }
 }

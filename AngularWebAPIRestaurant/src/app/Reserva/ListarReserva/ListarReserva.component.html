@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3 style="display: inline-block; margin-right: 20px;">Gestionar {{title}}</h3>
+      <button (click)="Nuevo()" class="btn btn-outline-success" style="float: right;">Nueva reserva</button>
+    </div>
+    <div class="card-body">
+      <button (click)="VerReservasHoy()" class="btn btn-outline-dark btn-sm">Ver hoy</button>
+      <button (click)="VerTodasReservas()" class="btn btn-outline-dark btn-sm">Ver todas</button>
+      <button (click)="ActivarBuscarPorFecha()" class="btn btn-outline-dark btn-sm">Buscar fecha</button>
+      <button (click)="ActivarBuscarEntreFechas()" class="btn btn-outline-dark btn-sm">Buscar entre fechas</button>
+      <div *ngIf="btnBuscarFecha" style=" float: right;" class="ml-2 mr-2">
+        <input  type="date" value="fecha" style="display: inline-block;">
+        <button class=" btn btn-outline-info btn-sm" style="display: inline-block;">Buscar</button>
+      </div>
+      <div *ngIf="btnBuscarEntreFechas" style=" float: right;" class="ml-2 mr-2">
+        <span>De </span><input  type="date" value="fecha1" style="display: inline-block;">
+        <span> a </span><input  type="date" value="fecha2" style="display: inline-block;">
+        <button class=" btn btn-outline-info btn-sm" style="display: inline-block;">Buscar</button>
+      </div>
+    <br><br>
+      <table class="table table-hover">
+        <thead>
+          <tr class="text-center">
+            <th>ID RESERVA</th>
+            <th>FECHA</th>
+            <th>HORA</th>
+            <th>PERSONAS</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let reserva of reservas" class="text-center table-light">
+            <td>{{reserva.id}}</td>
+            <td>{{reserva.fecha}}</td>
+            <td>{{reserva.hora}}</td>
+            <td>{{reserva.personas}}</td>
+            <td>
+              <button (click)="Ver(reserva)" class="btn btn-outline-info">Ver reserva</button>
+              <button (click)="Editar(reserva)" class="btn btn-outline-warning">Editar reserva</button>
+              <button class="btn btn-outline-danger">Borrar reserva</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -23,25 +23,19 @@ export class AppComponent {
     this.router.navigate(["gestionarTrabajadores"]);
   }
   
-  NuevoTrabajador(){
-    this.router.navigate(["addTrabajador"]);
-  }
-
   GestionarProducto(){
     this.router.navigate(["gestionarProducto"]);
-  }
-  NuevoProducto(){
-    this.router.navigate(["addProducto"]);
   }
 
   GestionarInfo(){
     this.router.navigate(["gestionarInfo"]);
   }
-  NuevaInfo(){
-    this.router.navigate(["addInfo"]);
-  }
 
   GestionarClientes(){
     this.router.navigate(["gestionarClientes"]);
+  }
+
+  GestionarReservas(){
+    this.router.navigate(["gestionarReservas"]);
   }
 }

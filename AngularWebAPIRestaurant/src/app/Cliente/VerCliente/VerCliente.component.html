@@ -1,14 +1,14 @@
 <div class="container col-md-6">
   <div class="card">
     <div class="card-header">
-      <h3>Ver cliente: {{cliente.nombre}}</h3>
+      <h4>Información del cliente</h4>
     </div>
     <div class="card-body">
       <div class="row">
         <div class="col-sm">
-          <div class="form-group">
+          <div class="form-group ">
             <label for="">Nombre:</label>
-            <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control" readonly>
+            <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control " readonly>
           </div>
           <div class="form-group">
             <label for="">Apellidos:</label>
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="col-sm">
-          <h5>Listado de reservas de este cliente</h5>
+          <h6>Listado de reservas de {{cliente.nombre}} {{cliente.apellidos}}</h6>
           <table class="table table-hover">
             <thead>
               <tr class="text-center">
@@ -38,9 +38,7 @@
                 <td>{{reserva.personas}}</td>
               </tr>
             </tbody>
-
           </table>
-        </div>
       </div>
       <div class="buttons">
         <button (click)="VolverAGestion()" class="btn btn-info">Volver atrás</button>

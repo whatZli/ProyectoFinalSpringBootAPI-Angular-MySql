@@ -17,7 +17,7 @@ public class ReservaServiceImp implements ReservaService{
     
     @Override
     public List<Reserva> listar() {
-        return repositorio.findAll();
+        return repositorio.findByOrderByFechaAscHoraAsc();
     }
 
     @Override

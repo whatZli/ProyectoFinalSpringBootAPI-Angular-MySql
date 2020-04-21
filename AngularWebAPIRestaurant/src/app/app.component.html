@@ -1,17 +1,21 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div  style="text-align:center">
+<div style="text-align:center">
   <h1>
     Gestión {{ title }}
   </h1>
-  
+
 </div>
 <br>
-<div class="container text-center">
-  <button (click)="GestionarClientes()" class="btn btn-info" style="margin-left: 10px;">Gestionar Clientes</button>
-  <button (click)="GestionarTrabajadores()" class="btn btn-info" style="margin-left: 10px;">Gestionar Trabajadores</button>
-  <button (click)="GestionarProducto()" class="btn btn-info" style="margin-left: 10px;">Gestionar Productos</button>
-  <button (click)="GestionarInfo()" class="btn btn-info" style="margin-left: 10px;">Información Empresa</button>
-  <button (click)="Inicio()" class="btn btn-info" style="float:right;">Inicio</button>
-</div>
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline ">
+    <button (click)="Inicio()" class="btn btn-light mr-4" >Inicio</button>
+    <button (click)="GestionarReservas()" class="btn btn-light m-2" >Gestionar Reservas</button>
+    <button (click)="GestionarClientes()" class="btn btn-light m-2" >Gestionar Clientes</button>
+    <button (click)="GestionarTrabajadores()" class="btn btn-light m-2" >Gestionar
+      Trabajadores</button>
+    <button (click)="GestionarProducto()" class="btn btn-light m-2" >Gestionar Productos</button>
+    <button (click)="GestionarInfo()" class="btn btn-light m-2" >Información Empresa</button>
+  </form>
+</nav>
 <hr>
 <router-outlet></router-outlet>

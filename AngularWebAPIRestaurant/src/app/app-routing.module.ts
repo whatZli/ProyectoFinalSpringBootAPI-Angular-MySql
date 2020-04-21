@@ -22,6 +22,13 @@ import { AddClienteComponent } from './Cliente/AddCliente/AddCliente.component';
 import { EditClienteComponent } from './Cliente/EditCliente/EditCliente.component';
 import { VerClienteComponent } from './Cliente/VerCliente/VerCliente.component';
 
+//Reserva modules
+
+import { ListarReservaComponent } from './Reserva/ListarReserva/ListarReserva.component';
+import { AddReservaComponent } from './Reserva/AddReserva/AddReserva.component';
+import { EditReservaComponent } from './Reserva/EditReserva/EditReserva.component';
+import { VerReservaComponent } from './Reserva/VerReserva/VerReserva.component';
+
 const routes: Routes = [
   {path:'gestionarTrabajadores',component:ListarTrabajadorComponent},
   {path:'addTrabajador',component:AddTrabajadorComponent},
@@ -41,6 +48,11 @@ const routes: Routes = [
   {path:'addCliente',component:AddClienteComponent},
   {path:'editCliente',component:EditClienteComponent},
   {path:'verCliente',component:VerClienteComponent},
+
+  {path:'gestionarReservas',component:ListarReservaComponent},
+  {path:'addReserva',component:AddReservaComponent},
+  {path:'editReserva',component:EditReservaComponent},
+  {path:'verReserva',component:VerReservaComponent},
 ];
 
 @NgModule({

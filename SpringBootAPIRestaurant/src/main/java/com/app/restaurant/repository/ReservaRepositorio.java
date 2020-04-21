@@ -10,19 +10,19 @@ import org.springframework.data.repository.query.Param;
 import com.app.restaurant.model.Reserva;
 
 public interface ReservaRepositorio extends Repository<Reserva, Integer>{
-    List<Reserva>findAll();
+    List<Reserva>findByOrderByFechaAscHoraAsc();
     Reserva findOne(int id);
     Reserva save(Reserva reserva);
     void delete(Reserva reserva);
     
-    @Query( "select o from Reserva o where id_cliente=:id" )
+    @Query( "select o from Reserva o where id_cliente=:id " )
     List<Reserva> findByClientId(@Param("id") int id);
     
-    @Query( "select o from Reserva o where fecha=CURRENT_DATE" )
+    @Query( "select o from Reserva o where fecha=CURRENT_DATE ORDER BY fecha ASC, hora ASC " )
     List<Reserva> findByToday();
     
     List<Reserva>findByFecha(String date);
 
-    @Query( "select o from Reserva o where fecha between :fecha1 and :fecha2" )
+    @Query( "select o from Reserva o where fecha between :fecha1 and :fecha2 ORDER BY fecha ASC, hora ASC" )
     List<Reserva> findByDateBetween(@Param("fecha1") String fecha1,@Param("fecha2") String fecha2);
 }

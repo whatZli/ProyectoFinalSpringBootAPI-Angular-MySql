@@ -1,0 +1,45 @@
+<div class="container col-md-6">
+  <div class="card">
+    <div class="card-header">
+      <h4>Información de la reserva</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-group ">
+            <label for="">ID Reserva:</label>
+            <input [(ngModel)]="reserva.id" name="id" type="number" class="form-control " readonly>
+          </div>
+          <div class="form-group">
+            <label for="">Fecha:</label>
+            <input [(ngModel)]="reserva.fecha" name="fecha" type="date" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="">Hora:</label>
+            <input [(ngModel)]="reserva.hora" name="hora" type="time" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="">Personas:</label>
+            <input [(ngModel)]="reserva.personas" name="personas" type="number" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-group">
+            <label for="">Nombre:</label>
+            <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="">Apellidos:</label>
+            <input [(ngModel)]="cliente.apellidos" name="apellidos" type="text" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="">Teléfono:</label>
+            <input [(ngModel)]="cliente.telefono" name="telefono" type="text" class="form-control" readonly>
+          </div>
+        </div>
+      <div class="buttons">
+        <button (click)="VolverAGestion()" class="btn btn-info">Volver atrás</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,11 +13,14 @@ export class VerClienteComponent implements OnInit {
 
   cliente :Cliente=new Cliente();
   reservas :Reserva[];
+
   constructor(private router:Router,private service:ServiceService) { }
 
   ngOnInit() {
+
     this.Ver();
     this.ObtenerListadoDeReservasDelCliente();
+
   }
 
   Ver(){

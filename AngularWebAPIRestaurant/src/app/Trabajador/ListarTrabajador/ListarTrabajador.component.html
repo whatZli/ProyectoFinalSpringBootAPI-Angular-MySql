@@ -1,8 +1,8 @@
 <div class="container">
   <div class="card">
     <div class="card-header">
-      <h3 style="display: inline-block;">Gestionar Trabajadores</h3>
-      <button (click)="NuevoTrabajador()" class="btn btn-info" style="float: right;">Nuevo Trabajador</button>
+      <h3 style="display: inline-block;">Gestionar trabajadores</h3>
+      <button (click)="NuevoTrabajador()" class="btn btn-outline-success" style="float: right;">Nuevo Trabajador</button>
     </div>
     <div class="card-body">
       <table class="table table-hover">
@@ -17,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let trabajador of trabajadores" class="text-center">
+          <tr *ngFor="let trabajador of trabajadores" class="text-center table-light">
             <td><img src="{{trabajador.imagen}}" alt=""></td>
             <td>{{trabajador.nombre}}</td>
             <td>{{trabajador.apellidos}}</td>
@@ -25,10 +25,10 @@
             <td *ngIf="trabajador.rango=='Empleado'" class="empleado">{{trabajador.rango}}</td>
             <td>{{trabajador.categoria}}</td>
             <td>
-              <button (click)="Ver(trabajador)" class="btn btn-info">Ver perfil</button>
-              <button (click)="Editar(trabajador)" class="btn btn-warning">Editar
+              <button (click)="Ver(trabajador)" class="btn btn-outline-info">Ver perfil</button>
+              <button (click)="Editar(trabajador)" class="btn btn-outline-warning">Editar
                 perfil</button>
-              <button (click)="Delete(trabajador)" class="btn btn-danger" >Borrar
+              <button (click)="Delete(trabajador)" class="btn btn-outline-danger" >Borrar
                 perfil</button>
             </td>
           </tr>

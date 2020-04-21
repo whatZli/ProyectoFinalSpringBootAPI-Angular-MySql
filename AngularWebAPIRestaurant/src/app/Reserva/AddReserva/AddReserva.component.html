@@ -1,0 +1,56 @@
+<div class="container col-md-6">
+  <div class="card">
+    <div class="card-header">
+      <h3>Nueva reserva</h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm">
+          <h5>Cliente existente</h5>
+          <div class="form-group">
+            <label for="">Cliente:</label>
+            <select [(ngModel)]="reserva.id_cliente" name="" id="" class="form-control">
+              <option value="">--Seleccione un cliente--</option>
+              <option *ngFor="let cliente of clientes" [value]="cliente.id">
+                {{cliente.nombre}} {{cliente.apellidos}}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="">Fecha:</label>
+            <input [(ngModel)]="reserva.fecha" name="fecha" type="date" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Hora:</label>
+            <input [(ngModel)]="reserva.hora" name="hora" type="time" class="form-control">
+          </div>
+          <div class="buttons">
+            <button (click)="GuardarReserva()" class="btn btn-success">Guardar reserva</button>
+          </div>
+        </div>
+        <div class="col-sm">
+
+          <h5>Crear un cliente nuevo</h5>
+          <div class="form-group">
+            <label for="">Nombre:</label>
+            <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Apellidos:</label>
+            <input [(ngModel)]="cliente.apellidos" name="apellidos" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Telefono:</label>
+            <input [(ngModel)]="cliente.telefono" name="telefono" type="text" class="form-control">
+          </div>
+          <div class="buttons">
+            <button (click)="GuardarCliente()" class="btn btn-success">Guardar cliente</button>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button (click)="VolverAGestion()" class="btn btn-info">Volver sin guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
