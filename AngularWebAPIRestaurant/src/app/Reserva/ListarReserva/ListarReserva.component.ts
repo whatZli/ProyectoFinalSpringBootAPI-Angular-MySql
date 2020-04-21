@@ -13,11 +13,12 @@ export class ListarReservaComponent implements OnInit {
   reservas: Reserva[];
   fechaHoyDate: Date = new Date();
   fechaHoyString: String = this.fechaHoyDate.getFullYear() + "-" + ("0" + (this.fechaHoyDate.getMonth() + 1)).slice(-2) + "-" + ("0" + this.fechaHoyDate.getDate()).slice(-2);
-  fechaHoyBoolean: Boolean = Boolean();
   reserva: Reserva;
   totalPersonas: number = 0;
   btnBuscarFecha: Boolean = false;
   btnBuscarEntreFechas: Boolean = false;
+  fecha1: String;
+  fecha2: String;
 
   constructor(private service: ServiceService, private router: Router) { }
 
@@ -61,11 +62,35 @@ export class ListarReservaComponent implements OnInit {
   ActivarBuscarPorFecha() {
     this.btnBuscarEntreFechas = false;
     this.btnBuscarFecha = true;
+    this.title = "reservas por fecha";
   }
-  ActivarBuscarEntreFechas(){
+  BuscarPorFecha() {
+    this.service.getReservasFecha(this.fecha1)
+      .subscribe(data => {
+        this.reservas = data;
+        for (let i = 0; i < data.length; i++) {
+          this.reserva = data[i];
+          this.totalPersonas = this.totalPersonas + this.reserva.personas;
+        }
+        this.title = "reservas para " + this.fecha1 + " (" + this.totalPersonas + " personas)";
+        this.totalPersonas = 0;
+      });
+  }
+
+  ActivarBuscarEntreFechas() {
     this.btnBuscarFecha = false;
     this.btnBuscarEntreFechas = true;
+    this.title = "reservas entre fechas";
   }
+  BuscarEntreFechas() {
+    this.service.getReservasEntreFechas(this.fecha1, this.fecha2)
+      .subscribe(data => {
+        this.reservas = data;
+        this.title = "reservas entre " + this.fecha1 + " y " + this.fecha2;
+      });
+  }
+
+
 
   Nuevo() {
     this.router.navigate(["addReserva"]);

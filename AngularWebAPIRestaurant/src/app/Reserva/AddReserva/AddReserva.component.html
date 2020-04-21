@@ -24,6 +24,10 @@
             <label for="">Hora:</label>
             <input [(ngModel)]="reserva.hora" name="hora" type="time" class="form-control">
           </div>
+          <div class="form-group">
+            <label for="">Nº personas:</label>
+            <input [(ngModel)]="reserva.personas" name="personas" type="number" class="form-control">
+          </div>
           <div class="buttons">
             <button (click)="GuardarReserva()" class="btn btn-success">Guardar reserva</button>
           </div>

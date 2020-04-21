@@ -10,13 +10,13 @@
       <button (click)="ActivarBuscarPorFecha()" class="btn btn-outline-dark btn-sm">Buscar fecha</button>
       <button (click)="ActivarBuscarEntreFechas()" class="btn btn-outline-dark btn-sm">Buscar entre fechas</button>
       <div *ngIf="btnBuscarFecha" style=" float: right;" class="ml-2 mr-2">
-        <input  type="date" value="fecha" style="display: inline-block;">
-        <button class=" btn btn-outline-info btn-sm" style="display: inline-block;">Buscar</button>
+        <input [(ngModel)]="fecha1" type="date" value="fecha1" style="display: inline-block;">
+        <button (click)="BuscarPorFecha()" class=" btn btn-outline-info btn-sm" style="display: inline-block;">Buscar</button>
       </div>
       <div *ngIf="btnBuscarEntreFechas" style=" float: right;" class="ml-2 mr-2">
-        <span>De </span><input  type="date" value="fecha1" style="display: inline-block;">
-        <span> a </span><input  type="date" value="fecha2" style="display: inline-block;">
-        <button class=" btn btn-outline-info btn-sm" style="display: inline-block;">Buscar</button>
+        <span>De </span><input [(ngModel)]="fecha1" type="date" value="fecha1" style="display: inline-block;">
+        <span> a </span><input [(ngModel)]="fecha2" type="date" value="fecha2" style="display: inline-block;">
+        <button (click)="BuscarEntreFechas()" class=" btn btn-outline-info btn-sm" style="display: inline-block;">Buscar</button>
       </div>
     <br><br>
       <table class="table table-hover">

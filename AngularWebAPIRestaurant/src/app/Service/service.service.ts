@@ -92,6 +92,12 @@ export class ServiceService {
   getReservasHoy(){
     return this.http.get<Reserva[]>(this.Url+"/reserva/consulta_hoy");
   }
+  getReservasFecha(fecha:String){
+    return this.http.get<Reserva[]>(this.Url+"/reserva/consulta_fecha/"+fecha);
+  }
+  getReservasEntreFechas(fecha1:String, fecha2:String){
+    return this.http.get<Reserva[]>(this.Url+"/reserva/consulta_entre_fechas/"+fecha1+"&"+fecha2);
+  }
   createReserva(reserva:Reserva){
     return this.http.post<Reserva>(this.Url+"/reserva",reserva);
   }
