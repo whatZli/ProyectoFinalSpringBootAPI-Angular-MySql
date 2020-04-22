@@ -37,9 +37,10 @@
             <div class="form-group">
               <label for="estado">Estado: </label>
               <select (change)="selectChangeEstado($event)" id="estado" class="browser-default custom-select">
-                <option value=""></option>
-                <option value="Alta">Alta</option>
-                <option value="Baja">Baja</option>
+                <option *ngFor="let e of estado" [value]="e.Value"
+                  [attr.selected]="e.estado==trabajador.estado ? true : null">
+                  {{trabajador.estado}}
+                </option>
               </select>
             </div>
 
@@ -62,7 +63,7 @@
                 <option value="Barra">Barra</option>
               </select>
             </div>
-          
+
           </div>
         </div>
         <div class="buttons">

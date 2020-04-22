@@ -62,6 +62,7 @@ export class ListarReservaComponent implements OnInit {
   ActivarBuscarPorFecha() {
     this.btnBuscarEntreFechas = false;
     this.btnBuscarFecha = true;
+    this.reservas = null;//Para limpiar la lista de reservas
     this.title = "reservas por fecha";
   }
   BuscarPorFecha() {
@@ -80,6 +81,7 @@ export class ListarReservaComponent implements OnInit {
   ActivarBuscarEntreFechas() {
     this.btnBuscarFecha = false;
     this.btnBuscarEntreFechas = true;
+    this.reservas = null;//Para limpiar la lista de reservas
     this.title = "reservas entre fechas";
   }
   BuscarEntreFechas() {
