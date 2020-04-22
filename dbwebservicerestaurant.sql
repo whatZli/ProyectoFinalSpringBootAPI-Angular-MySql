@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-04-2020 a las 09:52:19
+-- Tiempo de generación: 22-04-2020 a las 11:11:06
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `dbwebservicerestaurant`
 --
+CREATE DATABASE IF NOT EXISTS `dbwebservicerestaurant` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `dbwebservicerestaurant`;
 
 -- --------------------------------------------------------
 
