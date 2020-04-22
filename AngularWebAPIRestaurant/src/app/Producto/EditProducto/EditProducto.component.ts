@@ -9,7 +9,7 @@ import { ServiceService } from 'src/app/Service/service.service';
   styleUrls: ['./editproducto.component.css']
 })
 export class EditProductoComponent implements OnInit {
-
+  categoria=['Comida','Bebida','Otros'];
 
   producto:Producto=new Producto();
 
@@ -34,6 +34,11 @@ export class EditProductoComponent implements OnInit {
       alert("Se va a actualizar el producto "+this.producto.nombre);
       this.router.navigate(["gestionarProducto"]);
     })
+  }
+
+  selectChangeCategoria(event: any) {
+    //update the ui
+    this.producto.categoria = event.target.value;
   }
 
   VolverAGestion() {
