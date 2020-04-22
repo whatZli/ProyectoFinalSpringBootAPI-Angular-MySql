@@ -12,8 +12,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class EditTrabajadorComponent implements OnInit {
   trabajador: Trabajador = new Trabajador();
   categoria=['Cocina', 'Salon', 'Barra'];
-  rango=['jefe','empleado'];
-  estado=['alta','baja']
+  rango=['Jefe','Empleado'];
+  estado=['Alta','Baja']
 
 
   constructor(

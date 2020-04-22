@@ -37,30 +37,31 @@
             <div class="form-group">
               <label for="estado">Estado: </label>
               <select (change)="selectChangeEstado($event)" id="estado" class="browser-default custom-select">
-                <option *ngFor="let e of estado" [value]="e.Value"
-                  [attr.selected]="e.estado==trabajador.estado ? true : null">
-                  {{trabajador.estado}}
-                </option>
+                <option *ngFor="let e of estado" 
+                [ngValue]="e"
+                [selected]="e === trabajador.estado"
+                >{{e}}</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="rango">Rango: </label>
               <select (change)="selectChangeRango($event)" id="rango" class="browser-default custom-select">
-                <option value=""></option>
-                <option value="Jefe">Jefe</option>
-                <option value="Empleado">Empleado</option>
+                <option *ngFor="let r of rango" 
+                [ngValue]="r"
+                [selected]="r === trabajador.rango"
+                >{{r}}</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="categoria">Categoria: </label>
-              <select [(ngModel)]='categoria' (change)="selectChangeCategoria($event)" id="categoria"
+              <select (change)="selectChangeCategoria($event)" id="categoria"
                 class="browser-default custom-select">
-                <option value=""></option>
-                <option value="Cocina">Cocina</option>
-                <option value="Salon">Salon</option>
-                <option value="Barra">Barra</option>
+                <option *ngFor="let c of categoria" 
+                [ngValue]="c"
+                [selected]="c === trabajador.categoria"
+                >{{c}}</option>
               </select>
             </div>
 
