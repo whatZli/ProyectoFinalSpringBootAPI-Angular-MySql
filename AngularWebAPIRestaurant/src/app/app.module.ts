@@ -32,6 +32,11 @@ import { AddReservaComponent } from './Reserva/AddReserva/AddReserva.component';
 import { EditReservaComponent } from './Reserva/EditReserva/EditReserva.component';
 import { VerReservaComponent } from './Reserva/VerReserva/VerReserva.component';
 
+//Factura modules
+
+import { EditFacturaComponent } from './Factura/EditFactura/EditFactura.component';
+import { VerFacturaComponent } from './Factura/VerFactura/VerFactura.component';
+
 import{FormsModule}from '@angular/forms';
 import{ServiceService}from '../app/Service/service.service';
 import{HttpClientModule}from '@angular/common/http';
@@ -64,6 +69,9 @@ import{HttpClientModule}from '@angular/common/http';
     AddReservaComponent,
     EditReservaComponent,
     VerReservaComponent,
+
+    EditFacturaComponent,
+    VerFacturaComponent,
   ],
   imports: [
     BrowserModule,

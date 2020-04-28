@@ -1,4 +1,33 @@
-
+.card{
+    text-align: left;
+}
+.card-title{
+    width: 70%;
+    display: inline-block;
+    font-weight: 500;
+}
+.nombre{
+    font-weight: 500;
+}
+.hora{
+    width: 30%;
+    vertical-align: top;
+    text-align: right;
+    display: inline-block;
+}
+.espaciado{
+    margin: 15px 0;
+}
+.confirmar button{
+    width: 90%;
+}
+#mesa{
+    width: 80px;
+    margin-right: 10px;
+}
+#trabajador{
+    width: 180px;
+}
 button{
     margin-left: 10px;
 }

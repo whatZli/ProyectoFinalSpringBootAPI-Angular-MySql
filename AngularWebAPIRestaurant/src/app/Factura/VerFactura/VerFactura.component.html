@@ -1,0 +1,48 @@
+<div class="container col-md-6">
+  <div class="card">
+    <div class="card-header">
+      <h4>Información del cliente</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-group ">
+            <label for="">Nombre:</label>
+            <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control " readonly>
+          </div>
+          <div class="form-group">
+            <label for="">Apellidos:</label>
+            <input [(ngModel)]="cliente.apellidos" name="apellidos" type="text" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="">Telefono:</label>
+            <input [(ngModel)]="cliente.telefono" name="telefono" type="text" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="col-sm">
+          <h6>Listado de reservas de {{cliente.nombre}} {{cliente.apellidos}}</h6>
+          <table class="table table-hover">
+            <thead>
+              <tr class="text-center">
+                <td>ID Reserva</td>
+                <td>Fecha</td>
+                <td>Hora</td>
+                <td>Personas</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let reserva of reservas" class="text-center">
+                <td>{{reserva.id}}</td>
+                <td>{{reserva.fecha}}</td>
+                <td>{{reserva.hora}}</td>
+                <td>{{reserva.personas}}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      <div class="buttons">
+        <button (click)="VolverAGestion()" class="btn btn-info">Volver atrás</button>
+      </div>
+    </div>
+  </div>
+</div>

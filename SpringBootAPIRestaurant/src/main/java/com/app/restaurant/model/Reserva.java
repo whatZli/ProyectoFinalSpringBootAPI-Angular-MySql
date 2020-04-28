@@ -18,8 +18,57 @@ public class Reserva {
     @Column
     private int personas;
     @Column
+    private boolean confirmacion;
+    @Column
+    private boolean cancelada;
+	@Column
+    private boolean activa;
+    @Column
+    private int mesa;
+    @Column
+    private boolean finalizada;
+    @Column
     private int id_cliente;
-    
+    @Column
+    private int id_trabajador;
+
+	
+    public int getId_trabajador() {
+		return id_trabajador;
+	}
+	public void setId_trabajador(int id_trabajador) {
+		this.id_trabajador = id_trabajador;
+	}
+	public boolean isFinalizada() {
+		return finalizada;
+	}
+	public void setFinalizada(boolean finalizada) {
+		this.finalizada = finalizada;
+	}
+	public boolean isConfirmacion() {
+		return confirmacion;
+	}
+	public void setConfirmacion(boolean confirmacion) {
+		this.confirmacion = confirmacion;
+	}
+    public boolean isCancelada() {
+		return cancelada;
+	}
+	public void setCancelada(boolean cancelada) {
+		this.cancelada = cancelada;
+	}
+	public boolean isActiva() {
+		return activa;
+	}
+	public void setActiva(boolean activa) {
+		this.activa = activa;
+	}
+	public int getMesa() {
+		return mesa;
+	}
+	public void setMesa(int mesa) {
+		this.mesa = mesa;
+	}
 	public int getId() {
 		return id;
 	}

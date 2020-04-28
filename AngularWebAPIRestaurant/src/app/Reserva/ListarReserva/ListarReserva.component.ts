@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../Service/service.service';
 import { Reserva } from 'src/app/Modelo/Reserva';
+import { Cliente } from 'src/app/Modelo/Cliente';
+import { Trabajador } from 'src/app/Modelo/Trabajador';
+import { Factura } from 'src/app/Modelo/Factura';
 
 @Component({
   selector: 'app-listar',
@@ -13,12 +16,18 @@ export class ListarReservaComponent implements OnInit {
   reservas: Reserva[];
   fechaHoyDate: Date = new Date();
   fechaHoyString: String = this.fechaHoyDate.getFullYear() + "-" + ("0" + (this.fechaHoyDate.getMonth() + 1)).slice(-2) + "-" + ("0" + this.fechaHoyDate.getDate()).slice(-2);
+  fechaHoyFormatoES: String = ("0" + this.fechaHoyDate.getDate()).slice(-2) + "-" + ("0" + (this.fechaHoyDate.getMonth() + 1)).slice(-2) + "-" + this.fechaHoyDate.getFullYear();
   reserva: Reserva;
+  clientes: Array<Cliente> = [];
+  cliente = new Cliente();
   totalPersonas: number = 0;
+  btnVerHoy: Boolean = false;
   btnBuscarFecha: Boolean = false;
   btnBuscarEntreFechas: Boolean = false;
   fecha1: String;
   fecha2: String;
+  trabajadores: Trabajador[];
+  trabajador: Trabajador = new Trabajador();
 
   constructor(private service: ServiceService, private router: Router) { }
 
@@ -29,13 +38,10 @@ export class ListarReservaComponent implements OnInit {
   VerTodasReservas() {
     this.btnBuscarFecha = false;
     this.btnBuscarEntreFechas = false;
+    this.btnVerHoy = false;
     this.service.getReservas()
       .subscribe(data => {
         this.reservas = data;
-
-        if (data.length > 0) {
-          //this.ComprobarSiLaFechaEsHoy();
-        }
       });
     this.title = "todas las reservas";
   }
@@ -43,18 +49,23 @@ export class ListarReservaComponent implements OnInit {
   VerReservasHoy() {
     this.btnBuscarFecha = false;
     this.btnBuscarEntreFechas = false;
+    this.btnVerHoy = true;
+    this.totalPersonas = 0;
+    this.reservas = [];
+    this.service.getTrabajadores().subscribe(data => this.trabajadores = data)
     this.service.getReservasHoy()
       .subscribe(data => {
         this.reservas = data;
-        if (data.length > 0) {
-          //this.ComprobarSiLaFechaEsHoy();
-        }
-        for (let i = 0; i < data.length; i++) {
-          this.reserva = data[i];
+        this.clientes = [];
+        for (let i = 0; i < this.reservas.length; i++) {
+          this.reserva = this.reservas[i];
           this.totalPersonas = this.totalPersonas + this.reserva.personas;
+          this.title = "reservas para hoy " + this.fechaHoyFormatoES + " (" + this.totalPersonas + " personas)";
+          this.service.getClienteId(this.reserva.id_cliente)
+            .subscribe(data2 => {
+              this.clientes[i] = data2;
+            })
         }
-        this.title = "reservas para hoy (" + this.totalPersonas + " personas)";
-        this.totalPersonas = 0;
       });
 
   }
@@ -62,6 +73,7 @@ export class ListarReservaComponent implements OnInit {
   ActivarBuscarPorFecha() {
     this.btnBuscarEntreFechas = false;
     this.btnBuscarFecha = true;
+    this.btnVerHoy = false;
     this.reservas = null;//Para limpiar la lista de reservas
     this.title = "reservas por fecha";
   }
@@ -81,6 +93,7 @@ export class ListarReservaComponent implements OnInit {
   ActivarBuscarEntreFechas() {
     this.btnBuscarFecha = false;
     this.btnBuscarEntreFechas = true;
+    this.btnVerHoy = false;
     this.reservas = null;//Para limpiar la lista de reservas
     this.title = "reservas entre fechas";
   }
@@ -92,7 +105,100 @@ export class ListarReservaComponent implements OnInit {
       });
   }
 
+  Confirmar(reserva: Reserva) {
+    reserva.confirmacion = true;
+    this.service.updateReserva(reserva).subscribe(data => {
+      this.reserva = data;
+    });
+    console.log(reserva)
+  }
 
+  Cancelar(reserva: Reserva) {
+    reserva.cancelada = true;
+    this.service.updateReserva(reserva).subscribe(data => {
+      this.reserva = data;
+    });
+    console.log(reserva)
+  }
+
+  SelectChangeTrabajador(id_reserva: number, event: any) {
+    let idYNombre: String = event.target.value;
+    let separar: String[] = idYNombre.split("-");
+    let idTrabajador: number = Number(separar[0]);
+    let reservaActual: Reserva;
+
+    this.service.getReservaId(id_reserva).subscribe(data => {
+      reservaActual = data;
+      reservaActual.id_trabajador = idTrabajador;
+      this.service.updateReserva(reservaActual)
+        .subscribe(data2 => {
+          reservaActual = data2;
+          console.log(reservaActual)
+        })
+    })
+  }
+
+  ChangeMesa(id_reserva: number, event: any) {
+    let reservaActual: Reserva;
+    let numeroMesa: number = event.target.value;
+
+    this.service.getReservaId(id_reserva).subscribe(data => {
+      reservaActual = data;
+      reservaActual.mesa = numeroMesa;
+      this.service.updateReserva(reservaActual)
+        .subscribe(data2 => {
+          reservaActual = data2;
+          console.log(reservaActual)
+        })
+    })
+  }
+
+  ActivarReserva(id_reserva: number, event: any) {
+    let reservaActual: Reserva;
+    this.service.getReservaId(id_reserva).subscribe(data => {
+      reservaActual = data;
+      if (reservaActual.mesa != 0 && reservaActual.id_trabajador != 0) {
+        reservaActual.activa = true;
+        this.service.updateReserva(reservaActual)
+          .subscribe(data2 => {
+            reservaActual = data2;
+
+
+
+            let fechaAhoraDate: Date = new Date();
+            let fechaAhoraString: String = fechaAhoraDate.getFullYear() + "-" + ("0" + (fechaAhoraDate.getMonth() + 1)).slice(-2) + "-" + ("0" + fechaAhoraDate.getDate()).slice(-2);
+            let horaActualString: String = fechaAhoraDate.getHours() + ":" + fechaAhoraDate.getMinutes() + ":" + fechaAhoraDate.getSeconds();
+
+            let factura: Factura = new Factura();
+            factura.id_reserva = data.id;
+            factura.fecha = fechaAhoraString;
+            factura.hora = horaActualString;
+            factura.iva = 21;
+
+            console.log(factura);
+            this.service.createFactura(factura).subscribe();
+            this.service.getFacturas().subscribe(data3 => {
+              console.log(data3);
+            });
+            this.VerReservasHoy();
+          })
+      }
+    })
+  }
+
+  VerFactura(id_reserva: number) {
+    localStorage.setItem("idFactura", id_reserva.toString());
+    this.router.navigate(["verFactura"]);
+    console.log("Se va a ver la factura de la reserva " + id_reserva)
+  }
+
+  TerminarYFinalizar(reserva: Reserva) {
+    reserva.finalizada = true;
+    this.service.updateReserva(reserva).subscribe(data => {
+      this.reserva = data;
+    });
+    console.log(reserva)
+  }
 
   Nuevo() {
     this.router.navigate(["addReserva"]);

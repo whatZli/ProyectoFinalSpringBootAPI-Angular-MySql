@@ -29,6 +29,11 @@ import { AddReservaComponent } from './Reserva/AddReserva/AddReserva.component';
 import { EditReservaComponent } from './Reserva/EditReserva/EditReserva.component';
 import { VerReservaComponent } from './Reserva/VerReserva/VerReserva.component';
 
+//Factura modules
+
+import { EditFacturaComponent } from './Factura/EditFactura/EditFactura.component';
+import { VerFacturaComponent } from './Factura/VerFactura/VerFactura.component';
+
 const routes: Routes = [
   {path:'gestionarTrabajadores',component:ListarTrabajadorComponent},
   {path:'addTrabajador',component:AddTrabajadorComponent},
@@ -53,6 +58,9 @@ const routes: Routes = [
   {path:'addReserva',component:AddReservaComponent},
   {path:'editReserva',component:EditReservaComponent},
   {path:'verReserva',component:VerReservaComponent},
+
+  {path:'editFactura',component:EditFacturaComponent},
+  {path:'verFactura',component:VerFacturaComponent},
 ];
 
 @NgModule({

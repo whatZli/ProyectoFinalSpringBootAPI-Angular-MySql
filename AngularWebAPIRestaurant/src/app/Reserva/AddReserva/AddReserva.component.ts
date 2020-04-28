@@ -23,6 +23,7 @@ export class AddReservaComponent implements OnInit {
 
   GuardarReserva() {
     console.log(this.reserva)
+    this.reserva.id_trabajador = 1;//La reserva se asigna al trabajador por defecto, más adelante se asignará a un trabajador real
     this.service.createReserva(this.reserva)
       .subscribe(data => {
         alert("Se añadirá la reserva");
@@ -36,8 +37,8 @@ export class AddReservaComponent implements OnInit {
         alert("Se ha guardado el cliente ");
         console.log("Cliente guardado");
         console.log(this.cliente);
+        this.CargarClientesEnSelect();
       })
-      this.ngOnInit();
   }
 
   VolverAGestion() {

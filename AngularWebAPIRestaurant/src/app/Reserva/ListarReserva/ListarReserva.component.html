@@ -11,38 +11,122 @@
       <button (click)="ActivarBuscarEntreFechas()" class="btn btn-outline-dark btn-sm">Buscar entre fechas</button>
       <div *ngIf="btnBuscarFecha" style=" float: right;" class="ml-2 mr-2">
         <input [(ngModel)]="fecha1" type="date" value="fecha1" style="display: inline-block;">
-        <button (click)="BuscarPorFecha()" class=" btn btn-outline-info btn-sm" style="display: inline-block;">Buscar</button>
+        <button (click)="BuscarPorFecha()" class=" btn btn-outline-info btn-sm"
+          style="display: inline-block;">Buscar</button>
       </div>
       <div *ngIf="btnBuscarEntreFechas" style=" float: right;" class="ml-2 mr-2">
         <span>De </span><input [(ngModel)]="fecha1" type="date" value="fecha1" style="display: inline-block;">
         <span> a </span><input [(ngModel)]="fecha2" type="date" value="fecha2" style="display: inline-block;">
-        <button (click)="BuscarEntreFechas()" class=" btn btn-outline-info btn-sm" style="display: inline-block;">Buscar</button>
+        <button (click)="BuscarEntreFechas()" class=" btn btn-outline-info btn-sm"
+          style="display: inline-block;">Buscar</button>
       </div>
-    <br><br>
-      <table class="table table-hover">
-        <thead>
-          <tr class="text-center">
-            <th>ID RESERVA</th>
-            <th>FECHA</th>
-            <th>HORA</th>
-            <th>PERSONAS</th>
-            <th>ACCIONES</th>
-          </tr>
-        </thead>
-        <tbody >
-          <tr *ngFor="let reserva of reservas" class="text-center table-light">
-            <td>{{reserva.id}}</td>
-            <td>{{reserva.fecha}}</td>
-            <td>{{reserva.hora}}</td>
-            <td>{{reserva.personas}}</td>
-            <td>
-              <button (click)="Ver(reserva)" class="btn btn-outline-info">Ver reserva</button>
-              <button (click)="Editar(reserva)" class="btn btn-outline-warning">Editar reserva</button>
-              <button class="btn btn-outline-danger">Borrar reserva</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <br><br>
+      <div *ngIf="btnVerHoy ; else tabla">
+        <div>
+          <div class="row ">
+
+            <div *ngFor="let reserva of reservas ;let indexOfelement=index;" class="card bg-light m-2 "
+              style="max-width: 20rem;">
+              <div class="card-header ">
+                <div class="card-title" maxlength="12">ID Reserva {{reserva.id}}</div>
+                <div class="hora"><strong>{{reserva.hora}}</strong></div>
+              </div>
+              <div class="card-body">
+                <div>
+                  <div class="row">
+                    <div class="col-sm ">
+                      <span>Nombre: </span>
+                      <span>{{clientes[indexOfelement].nombre}}
+                        {{clientes[indexOfelement].apellidos}}
+                      </span>
+                      <br>
+                      <span>Persona/as: </span><span>{{reserva.personas}}</span>
+                    </div>
+                    <div class="col-sm">
+                      <div *ngIf="reserva.cancelada">
+                        <h3>Reserva cancelada</h3>
+                      </div>
+                      <button *ngIf="!reserva.cancelada&&!reserva.confirmacion" (click)="Editar(reserva)" style="font-size:18px">Editar
+                        reserva</button>
+                      <button *ngIf="!reserva.cancelada&&reserva.confirmacion&&!reserva.finalizada" (click)="Cancelar(reserva)"
+                        style="font-size:18px">Cancelar
+                        reserva</button>
+                      <button *ngIf="!reserva.cancelada&&reserva.finalizada" (click)="VerFactura(reserva.id)" class="ver-factura" style='font-size:18px'>Mostrar
+                        factura</button>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="!reserva.cancelada&&!reserva.confirmacion" class="confirmar espaciado">
+                  <div class="row ">
+                    <div class="col-sm mx-auto">
+                      <button (click)="Confirmar(reserva)" style="font-size:16px">Confirmar <br><i
+                          class="material-icons">check</i></button>
+                    </div>
+                    <div class="col-sm mx-auto">
+                      <button (click)="Cancelar(reserva)" style="font-size:16px">Cancelar <br><i
+                          class="material-icons">close</i></button>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="!reserva.cancelada&&reserva.confirmacion&&!reserva.activa" class="estado espaciado form-group row">
+                  <div>
+                    <label for="mesa">Mesa</label>
+                    <input (change)="ChangeMesa(reserva.id,$event)" type="number" name="mesa" id="mesa" class="form-control">
+                  </div>
+                  <div>
+                    <label for="trabajador">Trabajador</label>
+                    <select (change)="SelectChangeTrabajador(reserva.id,$event)" name="trabajador" id="trabajador"
+                      class="form-control">
+                      <option value=""></option>
+                      <option *ngFor="let trabajador of trabajadores" [ngValue]="trabajador.id">
+                        {{trabajador.id}}-{{trabajador.nombre}}</option>
+                    </select>
+                  </div>
+                  <div class="row mx-auto mt-4">
+                    <button (click)="ActivarReserva(reserva.id,$event)" class="btn btn-success ">Activar reserva</button>
+                  </div>
+                </div>
+
+
+
+                <div *ngIf="!reserva.cancelada&&reserva.activa&&!reserva.finalizada" class="aniadir-producto espaciado row">
+                  <div class="col-sm"><button style="font-size:18px">Añadir/ver productos</button></div>
+                  <div class="col-sm"><button (click)="TerminarYFinalizar(reserva)"
+                      style="font-size:18px; width: 100%;">Terminar y facturar</button></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #tabla>
+        <table class="table table-hover">
+          <thead>
+            <tr class="text-center">
+              <th>ID RESERVA</th>
+              <th>FECHA</th>
+              <th>HORA</th>
+              <th>PERSONAS</th>
+              <th>ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let reserva of reservas" class="text-center table-light">
+              <td>{{reserva.id}}</td>
+              <td>{{reserva.fecha}}</td>
+              <td>{{reserva.hora}}</td>
+              <td>{{reserva.personas}}</td>
+              <td>
+                <button (click)="Ver(reserva)" class="btn btn-outline-info">Ver reserva</button>
+                <button (click)="Editar(reserva)" class="btn btn-outline-warning">Editar reserva</button>
+                <button class="btn btn-outline-danger">Borrar reserva</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-template>
     </div>
   </div>
 </div>
