@@ -11,4 +11,7 @@ public interface FacturaLineasService {
     FacturaLineas add(FacturaLineas facturaLineas);
     FacturaLineas edit(FacturaLineas facturaLineas);
     FacturaLineas delete(int id);
+    
+    List<FacturaLineas> obtenerFacturasPorIDFactura(int id);
+    
 }

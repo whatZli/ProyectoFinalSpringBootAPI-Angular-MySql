@@ -123,6 +123,9 @@ export class ServiceService {
   getFacturaId(id: number) {
     return this.http.get<Factura>(this.Url + "/factura" + "/" + id);
   }
+  getFacturaPorIDReserva(id: number) {
+    return this.http.get<Factura>(this.Url + "/factura/reserva" + "/" + id);
+  }
 
 
   //Lineas de factura
@@ -140,5 +143,8 @@ export class ServiceService {
   }
   deleteFacturaLineas(facturaLineas: FacturaLineas) {
     return this.http.delete<FacturaLineas>(this.Url + "/facturaLineas" + "/" + facturaLineas.id);
+  }
+  getFacturaLineasPorIDFactura(id: number) {
+    return this.http.get<FacturaLineas[]>(this.Url + "/facturaLineas/factura" + "/" + id);
   }
 }

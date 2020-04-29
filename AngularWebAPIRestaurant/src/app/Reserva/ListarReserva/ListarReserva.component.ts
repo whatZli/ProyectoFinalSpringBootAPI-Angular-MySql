@@ -186,10 +186,14 @@ export class ListarReservaComponent implements OnInit {
     })
   }
 
+  AniadirVerProductos(id_reserva:number){
+    localStorage.setItem("idReserva", id_reserva.toString());
+    this.router.navigate(["editFactura"]);
+  }
+
   VerFactura(id_reserva: number) {
-    localStorage.setItem("idFactura", id_reserva.toString());
+    localStorage.setItem("idReserva", id_reserva.toString());
     this.router.navigate(["verFactura"]);
-    console.log("Se va a ver la factura de la reserva " + id_reserva)
   }
 
   TerminarYFinalizar(reserva: Reserva) {

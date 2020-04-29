@@ -44,5 +44,10 @@ public class FacturaLineasServiceImp implements FacturaLineasService{
        return facturaLineas;
     }
 
+	@Override
+	public List<FacturaLineas> obtenerFacturasPorIDFactura(int id) {
+		return repositorio.obtenerFacturasPorIDFactura(id);
+	}
+
 
 }

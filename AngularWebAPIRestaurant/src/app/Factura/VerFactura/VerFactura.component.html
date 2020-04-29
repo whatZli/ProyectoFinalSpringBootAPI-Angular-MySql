@@ -1,48 +1,107 @@
-<div class="container col-md-6">
+<div class="container">
   <div class="card">
     <div class="card-header">
-      <h4>Información del cliente</h4>
+      Factura
+      <strong>{{factura.id}}/{{factura.hora}}/{{factura.fecha}}</strong>
+      <span class="float-right">
+        <strong>Estado: </strong>
+        <span *ngIf="reserva_finalizada">Finalizada</span>
+        <span *ngIf="!reserva_finalizada">En proceso</span>
+      </span>
+
     </div>
     <div class="card-body">
+      <div class="row mb-4">
+        <div class="col-sm-6">
+          <h6 class="mb-3">Origen:</h6>
+          <div>
+            <strong>Nombre: {{info_nombre}}</strong>
+          </div>
+          <div>Dirección: {{info_direccion}}</div>
+          <div>Email: {{info_email}}</div>
+          <div>Teléfono: {{info_telefono}}</div>
+        </div>
+
+        <div class="col-sm-6">
+          <h6 class="mb-3">Destino:</h6>
+          <div>
+            <strong>Nombre: {{cliente_nombre}}</strong>
+          </div>
+          <div>Apellidos: {{cliente_apellidos}}</div>
+          <div>Teléfono: {{cliente_telefono}}</div>
+        </div>
+        
+      </div>
+
+      <div class="table-responsive-sm">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="center">#</th>
+              <th>Producto</th>
+
+              <th class="right">Coste</th>
+              <th class="center">Cantidad</th>
+              <th class="right">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let l of facturaLineas;let indexOfelement=index;">
+              <td class="center">{{indexOfelement+1}}</td>
+              <td class="left strong">{{productos[indexOfelement].nombre}}</td>
+
+              <td class="right">{{productos[indexOfelement].precio}} €</td>
+              <td class="center">{{l.cantidad}} unid.</td>
+              <td class="right">{{(l.cantidad-0)*productos[indexOfelement].precio}} €</td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
       <div class="row">
-        <div class="col-sm">
-          <div class="form-group ">
-            <label for="">Nombre:</label>
-            <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control " readonly>
-          </div>
-          <div class="form-group">
-            <label for="">Apellidos:</label>
-            <input [(ngModel)]="cliente.apellidos" name="apellidos" type="text" class="form-control" readonly>
-          </div>
-          <div class="form-group">
-            <label for="">Telefono:</label>
-            <input [(ngModel)]="cliente.telefono" name="telefono" type="text" class="form-control" readonly>
+        <div class="col-lg-6 col-sm-5">
+          <div class="col-sm-6">
+            <h6 class="mt-3">Le atendió:</h6>
+            <div>
+              <strong>Nombre: {{trabajador_nombre}}</strong>
+            </div>
+            <div>Mesa: {{reserva.mesa}}</div>
           </div>
         </div>
-        <div class="col-sm">
-          <h6>Listado de reservas de {{cliente.nombre}} {{cliente.apellidos}}</h6>
-          <table class="table table-hover">
-            <thead>
-              <tr class="text-center">
-                <td>ID Reserva</td>
-                <td>Fecha</td>
-                <td>Hora</td>
-                <td>Personas</td>
-              </tr>
-            </thead>
+
+        
+
+        <div class="col-lg-4 col-sm-5 ml-auto">
+
+          <table class="table table-clear">
             <tbody>
-              <tr *ngFor="let reserva of reservas" class="text-center">
-                <td>{{reserva.id}}</td>
-                <td>{{reserva.fecha}}</td>
-                <td>{{reserva.hora}}</td>
-                <td>{{reserva.personas}}</td>
+              <tr>
+                <td class="left">
+                  <strong>Precio sin iva</strong>
+                </td>
+                <td class="right">{{precio_sin_iva}} €</td>
+              </tr>
+              <tr>
+                <td class="left">
+                  <strong>IVA ({{iva}}%)</strong>
+                </td>
+                <td class="right">{{precio_iva_solo}} €</td>
+              </tr>
+              <tr>
+                <td class="left">
+                  <strong>Total</strong>
+                </td>
+                <td class="right">
+                  <strong>{{precio_total}} €</strong>
+                </td>
               </tr>
             </tbody>
           </table>
+
+        </div>
+
       </div>
-      <div class="buttons">
-        <button (click)="VolverAGestion()" class="btn btn-info">Volver atrás</button>
-      </div>
+
     </div>
   </div>
 </div>

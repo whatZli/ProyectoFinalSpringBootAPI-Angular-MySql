@@ -1,48 +1,46 @@
-<div class="container col-md-6">
+<div class="container w-100">
   <div class="card">
     <div class="card-header">
-      <h4>Información del cliente</h4>
+      <h4>Información de la reserva {{reserva.id}}</h4>
     </div>
-    <div class="card-body">
+    <div class="card-body w-100">
       <div class="row">
-        <div class="col-sm">
-          <div class="form-group ">
-            <label for="">Nombre:</label>
-            <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control " readonly>
-          </div>
-          <div class="form-group">
-            <label for="">Apellidos:</label>
-            <input [(ngModel)]="cliente.apellidos" name="apellidos" type="text" class="form-control" readonly>
-          </div>
-          <div class="form-group">
-            <label for="">Telefono:</label>
-            <input [(ngModel)]="cliente.telefono" name="telefono" type="text" class="form-control" readonly>
-          </div>
-        </div>
-        <div class="col-sm">
-          <h6>Listado de reservas de {{cliente.nombre}} {{cliente.apellidos}}</h6>
+        <div class="col-sm mx-auto">
+          <h6>Listado de productos añadidos a la reserva</h6>
           <table class="table table-hover">
             <thead>
-              <tr class="text-center">
-                <td>ID Reserva</td>
-                <td>Fecha</td>
-                <td>Hora</td>
-                <td>Personas</td>
+              <tr class="text-center mx-auto">
+                <td>#</td>
+                <td>Nombre</td>
+                <td>Coste</td>
+                <td>Cantidad</td>
+                <td>Total</td>
+                <td>Acciones</td>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let reserva of reservas" class="text-center">
-                <td>{{reserva.id}}</td>
-                <td>{{reserva.fecha}}</td>
-                <td>{{reserva.hora}}</td>
-                <td>{{reserva.personas}}</td>
+              <tr *ngFor="let fl of facturaLineas; let i=index" class="text-center">
+                <td>{{i+1}}</td>
+                <td></td>
+                <td></td>
+                <td>{{fl.cantidad}}</td>
+                <td></td>
+                <td><button (click)="EditarProducto()">Editar</button><button>Borrar</button></td>
               </tr>
+              <div>
+                <button (click)="AniadirProducto()" class="btn btn-warning">+</button>
+              </div>
             </tbody>
           </table>
-      </div>
-      <div class="buttons">
-        <button (click)="VolverAGestion()" class="btn btn-info">Volver atrás</button>
+        </div>
+        <div class="col-sm mx-auto">
+          <form action="">
+            <h3>Formulario {{titulo}}</h3>
+          </form>
+        </div>
+        <div class="buttons">
+          <button (click)="VolverAGestion()" class="btn btn-info">Volver a las reservas</button>
+        </div>
       </div>
     </div>
   </div>
-</div>

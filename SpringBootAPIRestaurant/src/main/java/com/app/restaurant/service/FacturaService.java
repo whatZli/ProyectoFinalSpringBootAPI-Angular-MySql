@@ -9,4 +9,5 @@ public interface FacturaService {
     List<Factura>listar();
     Factura listarId(int id);
     Factura add(Factura factura);
+    Factura obtenerFacturaPorIDReserva(int id);
 }

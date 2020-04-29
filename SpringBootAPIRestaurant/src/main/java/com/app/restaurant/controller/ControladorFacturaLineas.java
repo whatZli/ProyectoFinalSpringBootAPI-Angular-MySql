@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.restaurant.model.Factura;
 import com.app.restaurant.model.FacturaLineas;
 import com.app.restaurant.service.FacturaLineasService;
 
@@ -46,4 +47,12 @@ public class ControladorFacturaLineas {
     public FacturaLineas delete(@PathVariable("id") int  id){
         return facturaLineasServiceDAO.delete(id);
     }
+    
+    /*---------------------------------------------------------*/
+    //Obtener una linea de factura filtrando por el ID de la factura
+    @GetMapping(path = {"/factura/{id}"})
+    public List<FacturaLineas> obtenerFacturasPorIDFactura(@PathVariable("id")int id){
+        return facturaLineasServiceDAO.obtenerFacturasPorIDFactura(id);
+    }
+
 }

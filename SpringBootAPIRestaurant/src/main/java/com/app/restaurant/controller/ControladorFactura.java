@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.restaurant.model.Factura;
+import com.app.restaurant.model.Reserva;
 import com.app.restaurant.service.FacturaService;
 
 @CrossOrigin(origins = "http://localhost:4200",maxAge = 3600) //Para desarrollo
@@ -36,6 +37,13 @@ public class ControladorFactura {
     @GetMapping(path = {"/{id}"})
     public Factura listarId(@PathVariable("id")int id){
         return facturaServiceDAO.listarId(id);
+    }
+    
+    /*---------------------------------------------------------*/
+    //Obtener una factura filtrando por el ID de la reserva
+    @GetMapping(path = {"/reserva/{id}"})
+    public Factura obtenerFacturaPorIDReserva(@PathVariable("id")int id){
+        return facturaServiceDAO.obtenerFacturaPorIDReserva(id);
     }
     
 }

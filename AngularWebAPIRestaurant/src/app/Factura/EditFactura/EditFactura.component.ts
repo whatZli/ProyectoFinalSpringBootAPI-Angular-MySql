@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/Service/service.service';
 import { Cliente } from 'src/app/Modelo/Cliente';
 import { Reserva } from 'src/app/Modelo/Reserva';
+import { Factura } from 'src/app/Modelo/Factura';
+import { FacturaLineas } from 'src/app/Modelo/FacturaLineas';
 
 @Component({
   selector: 'app-edit',
@@ -11,37 +13,49 @@ import { Reserva } from 'src/app/Modelo/Reserva';
 })
 export class EditFacturaComponent implements OnInit {
 
-  cliente :Cliente=new Cliente();
-  reservas :Reserva[];
+  titulo:String="";
 
-  constructor(private router:Router,private service:ServiceService) { }
+  cliente: Cliente = new Cliente();
+  reserva: Reserva = new Reserva();
+  factura: Factura = new Factura();
+  facturaLineas: FacturaLineas[];
+
+  constructor(private router: Router, private service: ServiceService) { }
 
   ngOnInit() {
 
     this.Ver();
-    this.ObtenerListadoDeReservasDelCliente();
 
   }
 
-  Ver(){
-    let id=localStorage.getItem("idCliente");
-    this.service.getClienteId(+id)
-    .subscribe(data=>{
-      this.cliente=data;
-    })
+  Ver() {
+    let id = localStorage.getItem("idReserva");
+    this.service.getReservaId(+id)
+      .subscribe(data => {
+        this.reserva = data;
+        console.log(this.reserva.id)
+        this.service.getFacturaPorIDReserva(this.reserva.id).subscribe(data2 => {
+          this.factura = data2;
+          console.log(this.factura)
+          this.service.getFacturaLineasPorIDFactura(this.factura.id).subscribe(data3 => {
+            this.facturaLineas = data3;
+            console.log(this.facturaLineas)
+          });
+        });
+      })
 
   }
 
-  VolverAGestion(){
-    this.router.navigate(["gestionarClientes"]);
+  AniadirProducto(){
+    this.titulo=" añadir producto"
   }
 
-  ObtenerListadoDeReservasDelCliente(){
-    let id=localStorage.getItem("idCliente");
-    this.service.getReservasCliente(+id)
-    .subscribe(data=>{
-      this.reservas=data;
-      console.log(this.reservas);
-    })
+  EditarProducto(){
+    this.titulo=" editar producto"
   }
+
+  VolverAGestion() {
+    this.router.navigate(["gestionarReservas"]);
+  }
+
 }

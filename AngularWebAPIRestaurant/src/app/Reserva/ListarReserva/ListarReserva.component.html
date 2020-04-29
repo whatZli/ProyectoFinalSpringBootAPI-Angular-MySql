@@ -63,7 +63,7 @@
                           class="material-icons">check</i></button>
                     </div>
                     <div class="col-sm mx-auto">
-                      <button (click)="Cancelar(reserva)" style="font-size:16px">Cancelar <br><i
+                      <button (click)="Delete(reserva)" style="font-size:16px">Borrar <br><i
                           class="material-icons">close</i></button>
                     </div>
                   </div>
@@ -90,7 +90,7 @@
 
 
                 <div *ngIf="!reserva.cancelada&&reserva.activa&&!reserva.finalizada" class="aniadir-producto espaciado row">
-                  <div class="col-sm"><button style="font-size:18px">Añadir/ver productos</button></div>
+                  <div class="col-sm"><button (click)="AniadirVerProductos(reserva.id)" style="font-size:18px">Añadir/ver productos</button></div>
                   <div class="col-sm"><button (click)="TerminarYFinalizar(reserva)"
                       style="font-size:18px; width: 100%;">Terminar y facturar</button></div>
                 </div>

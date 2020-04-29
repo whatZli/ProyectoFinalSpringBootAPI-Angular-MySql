@@ -30,6 +30,11 @@ public class FacturaServiceImp implements FacturaService{
         return repositorio.save(factura);
     }
 
+	@Override
+	public Factura obtenerFacturaPorIDReserva(int id) {
+		return repositorio.obtenerFacturaPorIDReserva(id);
+	}
+
 
 	
 
