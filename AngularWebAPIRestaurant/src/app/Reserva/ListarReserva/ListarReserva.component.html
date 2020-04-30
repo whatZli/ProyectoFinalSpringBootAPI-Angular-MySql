@@ -5,6 +5,7 @@
       <button (click)="Nuevo()" class="btn btn-outline-success" style="float: right;">Nueva reserva</button>
     </div>
     <div class="card-body">
+      <button (click)="VerUltimosDias()" class="btn btn-outline-dark btn-sm">Ver últimos 7 días</button>
       <button (click)="VerReservasHoy()" class="btn btn-outline-dark btn-sm">Ver hoy</button>
       <button (click)="VerTodasReservas()" class="btn btn-outline-dark btn-sm">Ver todas</button>
       <button (click)="ActivarBuscarPorFecha()" class="btn btn-outline-dark btn-sm">Buscar fecha</button>
@@ -21,15 +22,15 @@
           style="display: inline-block;">Buscar</button>
       </div>
       <br><br>
-      <div *ngIf="btnVerHoy ; else tabla">
+      <div *ngIf="btnVerHoy||btnVerUltimosDias ; else tabla">
         <div>
           <div class="row ">
 
             <div *ngFor="let reserva of reservas ;let indexOfelement=index;" class="card bg-light m-2 "
               style="max-width: 20rem;">
               <div class="card-header ">
-                <div class="card-title" maxlength="12">ID Reserva {{reserva.id}}</div>
-                <div class="hora"><strong>{{reserva.hora}}</strong></div>
+                <div class="card-title w-50">ID Reserva {{reserva.id}}</div>
+                <div class="hora w-50"><strong>{{reserva.hora}}  <br>{{reserva.fecha}}</strong></div>
               </div>
               <div class="card-body">
                 <div>
@@ -51,6 +52,7 @@
                       <button *ngIf="!reserva.cancelada&&reserva.confirmacion&&!reserva.finalizada" (click)="Cancelar(reserva)"
                         style="font-size:18px">Cancelar
                         reserva</button>
+                        <h6 *ngIf="!reserva.cancelada&&reserva.finalizada" style="text-align: center;">Reserva finalizada con éxito</h6>
                       <button *ngIf="!reserva.cancelada&&reserva.finalizada" (click)="VerFactura(reserva.id)" class="ver-factura" style='font-size:18px'>Mostrar
                         factura</button>
                     </div>

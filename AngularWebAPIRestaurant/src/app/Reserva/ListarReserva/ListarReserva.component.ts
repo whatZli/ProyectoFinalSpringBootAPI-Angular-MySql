@@ -17,13 +17,18 @@ export class ListarReservaComponent implements OnInit {
   fechaHoyDate: Date = new Date();
   fechaHoyString: String = this.fechaHoyDate.getFullYear() + "-" + ("0" + (this.fechaHoyDate.getMonth() + 1)).slice(-2) + "-" + ("0" + this.fechaHoyDate.getDate()).slice(-2);
   fechaHoyFormatoES: String = ("0" + this.fechaHoyDate.getDate()).slice(-2) + "-" + ("0" + (this.fechaHoyDate.getMonth() + 1)).slice(-2) + "-" + this.fechaHoyDate.getFullYear();
+  fechaHaceUnaSemanaDate: Date = new Date();
+  fechaHaceUnaSemanaString: String;
   reserva: Reserva;
   clientes: Array<Cliente> = [];
   cliente = new Cliente();
   totalPersonas: number = 0;
+
+  btnVerUltimosDias: Boolean = false;
   btnVerHoy: Boolean = false;
   btnBuscarFecha: Boolean = false;
   btnBuscarEntreFechas: Boolean = false;
+
   fecha1: String;
   fecha2: String;
   trabajadores: Trabajador[];
@@ -46,10 +51,38 @@ export class ListarReservaComponent implements OnInit {
     this.title = "todas las reservas";
   }
 
+  VerUltimosDias() {
+    this.fechaHaceUnaSemanaDate.setMilliseconds(this.fechaHoyDate.getMilliseconds() - (1000 * 60 * 60 * 24 * 6));
+    this.fechaHaceUnaSemanaString = this.fechaHaceUnaSemanaDate.getFullYear() + "-" + ("0" + (this.fechaHaceUnaSemanaDate.getMonth() + 1)).slice(-2) + "-" + ("0" + this.fechaHaceUnaSemanaDate.getDate()).slice(-2);
+    console.log(this.fechaHaceUnaSemanaDate)
+    this.btnBuscarFecha = false;
+    this.btnBuscarEntreFechas = false;
+    this.btnVerHoy = false;
+    this.btnVerUltimosDias = true;
+    this.totalPersonas = 0;
+    this.reservas = [];
+    this.service.getTrabajadores().subscribe(data => this.trabajadores = data)
+    this.service.getReservasEntreFechas(this.fechaHaceUnaSemanaString, this.fechaHoyString)
+      .subscribe(data => {
+        this.reservas = data.reverse();
+        this.clientes = [];
+        for (let i = 0; i < this.reservas.length; i++) {
+          this.reserva = this.reservas[i];
+          this.totalPersonas = this.totalPersonas + this.reserva.personas;
+          this.title = "reservas entre " + this.fechaHaceUnaSemanaString + " y " + this.fechaHoyString;
+          this.service.getClienteId(this.reserva.id_cliente)
+            .subscribe(data2 => {
+              this.clientes[i] = data2;
+            })
+        }
+      });
+  }
+
   VerReservasHoy() {
     this.btnBuscarFecha = false;
     this.btnBuscarEntreFechas = false;
     this.btnVerHoy = true;
+    this.btnVerUltimosDias = false;
     this.totalPersonas = 0;
     this.reservas = [];
     this.service.getTrabajadores().subscribe(data => this.trabajadores = data)
@@ -74,6 +107,7 @@ export class ListarReservaComponent implements OnInit {
     this.btnBuscarEntreFechas = false;
     this.btnBuscarFecha = true;
     this.btnVerHoy = false;
+    this.btnVerUltimosDias = false;
     this.reservas = null;//Para limpiar la lista de reservas
     this.title = "reservas por fecha";
   }
@@ -94,6 +128,7 @@ export class ListarReservaComponent implements OnInit {
     this.btnBuscarFecha = false;
     this.btnBuscarEntreFechas = true;
     this.btnVerHoy = false;
+    this.btnVerUltimosDias = false;
     this.reservas = null;//Para limpiar la lista de reservas
     this.title = "reservas entre fechas";
   }
@@ -186,7 +221,7 @@ export class ListarReservaComponent implements OnInit {
     })
   }
 
-  AniadirVerProductos(id_reserva:number){
+  AniadirVerProductos(id_reserva: number) {
     localStorage.setItem("idReserva", id_reserva.toString());
     this.router.navigate(["editFactura"]);
   }

@@ -21,24 +21,72 @@
             <tbody>
               <tr *ngFor="let fl of facturaLineas; let i=index" class="text-center">
                 <td>{{i+1}}</td>
-                <td></td>
-                <td></td>
+                <td>{{productos_adquiridos[i].nombre}}</td>
+                <td>{{productos_adquiridos[i].precio}} €</td>
                 <td>{{fl.cantidad}}</td>
-                <td></td>
-                <td><button (click)="EditarProducto()">Editar</button><button>Borrar</button></td>
+                <td>{{productos_adquiridos[i].precio*fl.cantidad}}€</td>
+                <td>
+                  <button (click)="EditarProducto(fl.id,fl.cantidad)"
+                    class="btn btn-warning">Editar</button>
+                  <button (click)="BorrarProducto(fl.id)" class="btn btn-danger">Borrar</button>
+                </td>
               </tr>
-              <div>
-                <button (click)="AniadirProducto()" class="btn btn-warning">+</button>
-              </div>
             </tbody>
           </table>
         </div>
-        <div class="col-sm mx-auto">
+
+
+        <div *ngIf="form_visible_aniadir" class="col-sm mx-auto">
           <form action="">
-            <h3>Formulario {{titulo}}</h3>
+            <div class="form-group">
+              <h3>Formulario {{titulo}}</h3>
+              <label for="producto">Producto</label>
+              <select (change)="selectChangeProducto($event)" id="producto" class="browser-default custom-select">
+                <option value=""></option>
+                <option *ngFor="let p of productos" [ngValue]="p.id">{{p.id}}-{{p.nombre}}</option>
+              </select>
+            </div>
+            <div class="form-group w-25 mx-auto" style="display: inline-block;">
+              <label for="">Cantidad:</label>
+              <input [(ngModel)]="facturaLinea.cantidad" name="cantidad" type="number" class="form-control">
+            </div>
+            <div class="form-group w-25 mx-auto" style="display: inline-block; ">
+              <button (click)="Guardar(facturaLinea)" class="btn btn-success">Guardar</button>
+            </div>
+            <div class="form-group w-25 mx-auto" style="display: inline-block; ">
+              <button (click)="Salir()" class="btn btn-warning">Salir</button>
+            </div>
           </form>
         </div>
+
+
+        <div *ngIf="form_visible_editar" class="col-sm mx-auto">
+          <form action="">
+            <div class="form-group">
+              <h3>Formulario {{titulo}}</h3>
+              <label for="producto">Producto</label>
+              <select (change)="selectChangeProducto($event)" id="producto" class="browser-default custom-select" disabled >
+                <option *ngFor="let p of productos" [ngValue]="p.id" [selected]="facturaLinea.id_producto === p.id">
+                  {{p.id}}-{{p.nombre}}</option>
+              </select>
+            </div>
+            <div class="form-group w-25 mx-auto" style="display: inline-block;">
+              <label for="">Cantidad:</label>
+              <input [(ngModel)]="facturaLinea.cantidad" name="cantidad" type="number" class="form-control">
+            </div>
+            <div class="form-group w-25 mx-auto" style="display: inline-block; ">
+              <button (click)="ModificarLinea(facturaLinea)" class="btn btn-success">Modificar</button>
+            </div>
+            <div class="form-group w-25 mx-auto" style="display: inline-block; ">
+              <button (click)="Salir()" class="btn btn-warning">Salir</button>
+            </div>
+          </form>
+        </div>
+
+
         <div class="buttons">
+          <button *ngIf="!form_visible_editar&&!form_visible_aniadir" (click)="AniadirProducto()"
+            class="btn btn-success">Añadir producto</button>
           <button (click)="VolverAGestion()" class="btn btn-info">Volver a las reservas</button>
         </div>
       </div>
