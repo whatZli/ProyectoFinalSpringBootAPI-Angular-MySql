@@ -11,11 +11,16 @@ import { ServiceService } from 'src/app/Service/service.service';
 export class AddProductoComponent implements OnInit {
 
   producto:Producto=new Producto();
+  categoria=['Comida','Bebida','Otros'];
+  
   constructor(private router:Router, private service:ServiceService) { }
 
   ngOnInit() {
   }
-
+  selectChangeCategoria(event: any) {
+    //update the ui
+    this.producto.categoria = event.target.value;
+  }
   GuardarProducto(){
     this.service.createProducto(this.producto)
     .subscribe(data=>{
