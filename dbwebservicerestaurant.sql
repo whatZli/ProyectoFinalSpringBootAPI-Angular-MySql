@@ -21,6 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `dbwebservicerestaurant`
 --
+DROP DATABASE IF EXISTS `dbwebservicerestaurant`;
 CREATE DATABASE IF NOT EXISTS `dbwebservicerestaurant` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `dbwebservicerestaurant`;
 
