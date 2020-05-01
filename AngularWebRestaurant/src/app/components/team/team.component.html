@@ -1,0 +1,28 @@
+<!-- Team Section -->
+<div id="team" class="text-center">
+  <div class="overlay">
+    <div class="container">
+      <div class="col-md-10 col-md-offset-1 section-title">
+        <h2>Conoce a nuestros chefs</h2>
+        <hr>
+        <p>Nuestro restaurante está compuesto por grandes profesionales, para conseguir una experiencia inolvidable en
+          nuestro restaurante.</p>
+      </div>
+      <div id="row ">
+        <div *ngFor="let trabajador of trabajadores">
+          <div class="col-md-4 team" *ngIf="trabajador.categoria==='Cocina'">
+            <div class="thumbnail">
+              <div class="team-img"><img src="{{trabajador.imagen}}" alt="..."></div>
+              <div class="caption">
+                <h3>{{trabajador.nombre}}</h3>
+                <p>{{trabajador.descripcion}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

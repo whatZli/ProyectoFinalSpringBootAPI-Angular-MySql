@@ -1,0 +1,55 @@
+<!-- Portfolio Section -->
+<div id="portfolio">
+  <div class="section-title text-center center">
+    <div class="overlay">
+      <h2>Galleria</h2>
+      <hr>
+      <p>Disfruta de las imagenes de nuestros productos.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="categories">
+        <ul class="cat">
+          <li>
+            <ol class="type">
+              <li><a href="#" data-filter="*" class="active">Todos</a></li>
+              <li><a href="#" data-filter=".breakfast">Comida</a></li>
+              <li><a href="#" data-filter=".lunch">Bebida</a></li>
+            </ol>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="portfolio-items col-sm-6 col-md-4 col-lg-4" *ngFor="let producto of productos">
+        <div class="breakfast" *ngIf="producto.categoria==='Comida'">
+          <div class="portfolio-item">
+            <div class="hover-bg"> <a href="{{producto.imagen}}" title="{{producto.nombre}}"
+                data-lightbox-gallery="gallery1">
+                <div class="hover-text">
+                  <h4>{{producto.nombre}}</h4>
+                </div>
+                <img src="{{producto.imagen}}" class="img-responsive" alt="Project Title">
+              </a> </div>
+          </div>
+        </div>
+
+        <div class="lunch" *ngIf="producto.categoria==='Bebida'">
+          <div class="portfolio-item">
+            <div class="hover-bg"> <a href="{{producto.imagen}}" title="{{producto.nombre}}"
+                data-lightbox-gallery="gallery1">
+                <div class="hover-text">
+                  <h4>{{producto.nombre}}</h4>
+                </div>
+                <img src="{{producto.imagen}}" class="img-responsive" alt="Project Title">
+              </a> </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<!-- Restaurant Menu Section -->
+<div id="restaurant-menu">
+  <div class="section-title text-center center">
+    <div class="overlay">
+      <h2>Menu</h2>
+      <hr>
+      <p>Adéntrate en este precioso palacete de cortes venecianos y degusta maravillas como su tempura de langostinos
+        con verduras y reducción de romero o el risotto de boletus al aroma de trufa blanca del Piamonte.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Comidas</h2>
+          <hr>
+          <div class="menu-item" *ngFor="let producto of productos">
+            <div *ngIf="producto.categoria==='Comida'">
+              <div class="menu-item-name"> {{producto.nombre}} </div>
+              <div class="menu-item-price"> {{producto.precio}} € </div>
+              <div class="menu-item-description"> {{producto.descripcion}}</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Bebidas</h2>
+          <hr>
+          <div class="menu-item" *ngFor="let producto of productos">
+            <div *ngIf="producto.categoria==='Bebida'">
+              <div class="menu-item-name"> {{producto.nombre}} </div>
+              <div class="menu-item-price"> {{producto.precio}} € </div>
+              <div class="menu-item-description"> {{producto.descripcion}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

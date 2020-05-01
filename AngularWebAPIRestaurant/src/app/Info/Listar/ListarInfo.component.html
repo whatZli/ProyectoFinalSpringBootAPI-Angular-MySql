@@ -17,8 +17,9 @@
           <tr *ngFor="let info of infos" class="text-center table-light">
             <td>{{info.dato}}</td>
             <td>{{info.valor}}</td>
-            <td>
-              <button (click)="Editar(info)" class="btn btn-outline-warning">Editar</button>
+            <td class="mx-auto w-25">
+              <button (click)="Editar(info)" class="btn btn-outline-warning mb-2">Editar</button>
+			  
               <button (click)="Delete(info)" class="btn btn-outline-danger" style="margin-left: 10px;" disabled>Borrar</button>
             </td>
           </tr>

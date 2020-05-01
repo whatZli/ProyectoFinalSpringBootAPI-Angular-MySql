@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.restaurant.model.Producto;
 import com.app.restaurant.service.ProductoService;
 
-@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600) //Para desarrollo
-//@CrossOrigin(origins = "http://localhost",maxAge = 3600) //Para produccion para permitir la conexión desde angular
+@CrossOrigin(origins  = "*", allowedHeaders ="*",maxAge = 3600) //Para permitir la conexión desde cualquier url
+//@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600) //Para produccion para permitir la conexión desde angular
 @RestController
 @RequestMapping({"/producto"})
 public class ControladorProducto {
