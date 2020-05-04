@@ -25,7 +25,6 @@ public class ControladorReserva {
     
     @Autowired
     ReservaService ReservaService;
-    ClienteService ClienteService;
     
     @GetMapping
     public List<Reserva>listar(){
