@@ -1,5 +1,5 @@
 # ProyectoFinalSpringBootAPI
-![Proyecto final Alex Dominguez](https://ibb.co/qW00wD0 "Proyecto final Alex Dominguez")
+![Proyecto final Alex Dominguez](https://i.ibb.co/dLbbyfb/portada.jpg "Proyecto final Alex Dominguez")
 
 Este repositorio consta de 3 aplicaciones
 
