@@ -24,4 +24,4 @@ Para correr la aplicación, sólo tenemos que ir al directorio AngularWebAPIRest
 
 Si queremos correr las 2 aplicaciones Angular a la vez, al ocupar por defecto el mismo puerto le podemos cambiar manualmente esta opción:
 
-ng serve --port 4201
+`ng serve --port 4201`
