@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Implementation-Title: Restaurante
-Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Version: 3.0.1-SNAPSHOT
 Built-By: Abel
-Implementation-Vendor-Id: com.sinfloo
+Implementation-Vendor-Id: com.app
 Build-Jdk: 1.8.0_45
 Implementation-URL: http://projects.spring.io/spring-boot/Restaurante/
 Created-By: Maven Integration for Eclipse

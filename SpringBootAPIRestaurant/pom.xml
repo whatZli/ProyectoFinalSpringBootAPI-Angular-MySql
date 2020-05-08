@@ -8,9 +8,9 @@
 		<version>1.5.19.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sinfloo</groupId>
+	<groupId>com.app</groupId>
 	<artifactId>Restaurante</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>3.0.1-SNAPSHOT</version>
 	<name>Restaurante</name>
 	<description>Demo project for Spring Boot</description>
 

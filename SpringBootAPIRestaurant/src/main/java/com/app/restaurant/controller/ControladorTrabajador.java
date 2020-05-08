@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.restaurant.model.Trabajador;
 import com.app.restaurant.service.TrabajadorService;
 
-@CrossOrigin(origins  = "*", allowedHeaders ="*",maxAge = 3600) // permitir la conexión desde angular
+@CrossOrigin(origins  = "*", allowedHeaders ="*",maxAge = 3600) //Para permitir la conexión desde cualquier url
 @RestController
 @RequestMapping({"/trabajador"})
 public class ControladorTrabajador {
