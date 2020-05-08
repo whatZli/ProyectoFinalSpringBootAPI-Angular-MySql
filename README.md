@@ -13,7 +13,7 @@ Es importante haber importado antes la base de datos y tener el servicio mysql a
 
 ## AngularWebAPIRestaurant
 
-![Proyecto final Alex Dominguez](https://i.ibb.co/4pTVYRj/2020-05-07-13h40-02.png "Proyecto final Alex Dominguez")
+![Proyecto final Alex Dominguez](https://i.ibb.co/sgmZVkx/2020-05-07-20h36-53.png "Proyecto final Alex Dominguez")
 
 Es la parte front-end de la aplicación. Está diseñada con el framework de JavaScript Angular9. Trata de, a través de una interfaz web, comunicarse con la aplicación back-end y realizar peticiones de consulta, escritura y borrado.
 Para correr la aplicación, sólo tenemos que ir al directorio AngularWebAPIRestaurant y ejecutar el comando:
@@ -26,7 +26,7 @@ Para correr la aplicación, sólo tenemos que ir al directorio AngularWebAPIRest
 
 ## AngularWebRestaurant
 
-![Proyecto final Alex Dominguez](https://i.ibb.co/sgmZVkx/2020-05-07-20h36-53.png "Proyecto final Alex Dominguez")
+![Proyecto final Alex Dominguez](https://i.ibb.co/4pTVYRj/2020-05-07-13h40-02.png "Proyecto final Alex Dominguez")
 
 Es una página web creada desde Angular9 con el único propósito de consumir los datos de la API de la aplicación de SpringBoot. En este caso sólo se permite leer los datos.
 Para correr la aplicación, sólo tenemos que ir al directorio AngularWebAPIRestaurant y ejecutar el comando:
